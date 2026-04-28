@@ -32,22 +32,22 @@ const CustomerPayments = () => {
   return (
     <div className="space-y-6">
       {/* Resumen */}
-      <div className="grid md:grid-cols-4 gap-6">
-        <div className="bg-card border border-border rounded-lg p-6 shadow-card">
-          <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Precio total</div>
-          <div className="font-display text-2xl">{fmtUSD(total)}</div>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        <div className="bg-card border border-border rounded-lg p-5 shadow-card min-w-0">
+          <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1 truncate">Precio total</div>
+          <div className="font-display text-xl xl:text-2xl truncate" title={fmtUSD(total)}>{fmtUSD(total)}</div>
         </div>
-        <div className="bg-card border border-border rounded-lg p-6 shadow-card">
-          <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Pagado</div>
-          <div className="font-display text-2xl text-emerald-600">{fmtUSD(paid)}</div>
+        <div className="bg-card border border-border rounded-lg p-5 shadow-card min-w-0">
+          <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1 truncate">Pagado</div>
+          <div className="font-display text-xl xl:text-2xl text-emerald-600 truncate" title={fmtUSD(paid)}>{fmtUSD(paid)}</div>
         </div>
-        <div className="bg-card border border-border rounded-lg p-6 shadow-card">
-          <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Pendiente</div>
-          <div className="font-display text-2xl">{fmtUSD(pending)}</div>
+        <div className="bg-card border border-border rounded-lg p-5 shadow-card min-w-0">
+          <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1 truncate">Pendiente</div>
+          <div className="font-display text-xl xl:text-2xl truncate" title={fmtUSD(pending)}>{fmtUSD(pending)}</div>
         </div>
-        <div className="bg-card border border-border rounded-lg p-6 shadow-card">
-          <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Vencidos</div>
-          <div className={`font-display text-2xl ${overdue > 0 ? "text-destructive" : ""}`}>{overdue}</div>
+        <div className="bg-card border border-border rounded-lg p-5 shadow-card min-w-0">
+          <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1 truncate">Vencidos</div>
+          <div className={`font-display text-xl xl:text-2xl ${overdue > 0 ? "text-destructive" : ""}`}>{overdue}</div>
         </div>
       </div>
 

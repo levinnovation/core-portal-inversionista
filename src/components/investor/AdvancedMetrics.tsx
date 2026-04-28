@@ -70,10 +70,10 @@ export const AdvancedMetrics = ({ investments, distributions, totalInvested, tot
           </Button>
         </div>
       </div>
-      <div className="grid md:grid-cols-4 gap-4">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <TooltipProvider>
           {items.map((it) => (
-            <div key={it.label} className="bg-card border border-border rounded-lg p-5 shadow-card">
+            <div key={it.label} className="bg-card border border-border rounded-lg p-5 shadow-card min-w-0">
               <div className="flex items-center justify-between mb-3 text-accent">
                 {it.icon}
                 <Tooltip>
@@ -87,8 +87,8 @@ export const AdvancedMetrics = ({ investments, distributions, totalInvested, tot
                   </TooltipContent>
                 </Tooltip>
               </div>
-              <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">{it.label}</div>
-              <div className="font-display text-2xl text-foreground">{it.value}</div>
+              <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1 truncate">{it.label}</div>
+              <div className="font-display text-2xl text-foreground truncate" title={it.value}>{it.value}</div>
             </div>
           ))}
         </TooltipProvider>
