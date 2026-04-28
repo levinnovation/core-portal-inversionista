@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { loadPortfolio, fmtUSD, PortfolioData } from "@/lib/investor";
 import { TrendingUp, Wallet, Building2, PieChart as PieIcon } from "lucide-react";
+import { AdvancedMetrics } from "@/components/investor/AdvancedMetrics";
 import {
   ResponsiveContainer,
   LineChart,
@@ -85,6 +86,13 @@ const InvestorDashboard = () => {
           </div>
         ))}
       </div>
+
+      <AdvancedMetrics
+        investments={data.investments}
+        distributions={data.distributions}
+        totalInvested={data.totalInvested}
+        totalDistributions={data.totalDistributions}
+      />
 
       <div className="grid lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 bg-card border border-border rounded-lg p-6 shadow-card">
