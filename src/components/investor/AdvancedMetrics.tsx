@@ -1,7 +1,9 @@
-import { Activity, Percent, Layers, DollarSign, Info } from "lucide-react";
+import { Activity, Percent, Layers, DollarSign, Info, FileDown, FileText } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
 import { buildCashFlows, cashOnCash, equityMultiple, estimateNOI, fmtMultiple, fmtPct, xirr } from "@/lib/finance";
 import { fmtUSD } from "@/lib/investor";
+import { exportMetricsCSV, exportMetricsPDF } from "@/lib/exportMetrics";
 
 interface Props {
   investments: any[];
