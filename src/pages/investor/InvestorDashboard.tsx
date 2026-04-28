@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
+import { useImpersonation } from "@/hooks/useImpersonation";
 import { loadPortfolio, fmtUSD, PortfolioData } from "@/lib/investor";
 import { TrendingUp, Wallet, Building2, PieChart as PieIcon } from "lucide-react";
 import { AdvancedMetrics } from "@/components/investor/AdvancedMetrics";
@@ -22,16 +23,17 @@ const COLORS = ["hsl(var(--accent))", "hsl(var(--primary))", "hsl(var(--muted-fo
 
 const InvestorDashboard = () => {
   const { user } = useAuth();
+  const { target } = useImpersonation();
   const [data, setData] = useState<PortfolioData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!user) return;
-    loadPortfolio(user.id).then((d) => {
+    loadPortfolio(user.id, { impersonateInvestorId: target?.kind === "investor" ? target.recordId : null }).then((d) => {
       setData(d);
       setLoading(false);
     });
-  }, [user]);
+  }, [user, target]);
 
   if (loading) {
     return <div className="text-muted-foreground">Cargando portafolio…</div>;

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+import { useImpersonation } from "@/hooks/useImpersonation";
 import { FileText, Download } from "lucide-react";
 import { fmtDate, loadCustomerData } from "@/lib/customer";
 
@@ -13,13 +14,14 @@ const DOC_TYPES = [
 
 const CustomerDocuments = () => {
   const { user } = useAuth();
+  const { target } = useImpersonation();
   const [docs, setDocs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!user) return;
     (async () => {
-      const data = await loadCustomerData(user.id);
+      const data = await loadCustomerData(user.id, { impersonateCustomerId: target?.kind === "customer" ? target.recordId : null });
       const entityIds = [
         ...data.sales.map((s: any) => s.id),
         ...data.units.map((u: any) => u.id),
@@ -37,7 +39,7 @@ const CustomerDocuments = () => {
       setDocs(docs ?? []);
       setLoading(false);
     })();
-  }, [user]);
+  }, [user, target]);
 
   if (loading) return <div className="text-muted-foreground">Cargando documentos…</div>;
 

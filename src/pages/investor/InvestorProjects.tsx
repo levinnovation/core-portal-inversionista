@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
+import { useImpersonation } from "@/hooks/useImpersonation";
 import { supabase } from "@/integrations/supabase/client";
 import { loadPortfolio, fmtUSD } from "@/lib/investor";
 import { Progress } from "@/components/ui/progress";
@@ -7,6 +8,7 @@ import { MapPin, Calendar } from "lucide-react";
 
 const InvestorProjects = () => {
   const { user } = useAuth();
+  const { target } = useImpersonation();
   const [projects, setProjects] = useState<any[]>([]);
   const [phases, setPhases] = useState<Record<string, any[]>>({});
   const [investments, setInvestments] = useState<any[]>([]);
@@ -15,7 +17,7 @@ const InvestorProjects = () => {
   useEffect(() => {
     if (!user) return;
     (async () => {
-      const portfolio = await loadPortfolio(user.id);
+      const portfolio = await loadPortfolio(user.id, { impersonateInvestorId: target?.kind === "investor" ? target.recordId : null });
       setProjects(portfolio.projects);
       setInvestments(portfolio.investments);
       if (portfolio.projects.length > 0) {
@@ -32,7 +34,7 @@ const InvestorProjects = () => {
       }
       setLoading(false);
     })();
-  }, [user]);
+  }, [user, target]);
 
   if (loading) return <div className="text-muted-foreground">Cargando proyectos…</div>;
   if (projects.length === 0) {

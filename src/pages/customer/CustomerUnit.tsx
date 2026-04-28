@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
+import { useImpersonation } from "@/hooks/useImpersonation";
 import { CustomerData, fmtDate, fmtUSD, loadCustomerData } from "@/lib/customer";
 import { Building2, MapPin, Bed, Bath, Maximize2, Calendar, Landmark } from "lucide-react";
 
@@ -15,9 +16,10 @@ const Field = ({ icon, label, value }: { icon: React.ReactNode; label: string; v
 
 const CustomerUnit = () => {
   const { user } = useAuth();
+  const { target } = useImpersonation();
   const [data, setData] = useState<CustomerData | null>(null);
 
-  useEffect(() => { if (user) loadCustomerData(user.id).then(setData); }, [user]);
+  useEffect(() => { if (user) loadCustomerData(user.id, { impersonateCustomerId: target?.kind === "customer" ? target.recordId : null }).then(setData); }, [user, target]);
 
   if (!data) return <div className="text-muted-foreground">Cargando…</div>;
   if (!data.customer || data.sales.length === 0) {
