@@ -4,9 +4,10 @@ import { useAuth } from "@/hooks/useAuth";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Upload, Loader2 } from "lucide-react";
+import { Upload, Loader2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
 interface Props {
@@ -60,6 +61,7 @@ export const DocumentUploadDialog = ({ open, onOpenChange, onSaved, entityType, 
   const inputRef = useRef<HTMLInputElement>(null);
   const [docType, setDocType] = useState("");
   const [name, setName] = useState("");
+  const [textToIndex, setTextToIndex] = useState("");
   const [busy, setBusy] = useState(false);
 
   const types = DOC_TYPES[entityType] ?? [{ value: "other", label: "Otro" }];
@@ -76,18 +78,31 @@ export const DocumentUploadDialog = ({ open, onOpenChange, onSaved, entityType, 
       const { error: upErr } = await supabase.storage.from(bucket).upload(path, file);
       if (upErr) throw upErr;
       const { data: pub } = supabase.storage.from(bucket).getPublicUrl(path);
-      const { error } = await supabase.from("documents").insert({
+      const { data: inserted, error } = await supabase.from("documents").insert({
         entity_type: entityType,
         entity_id: entityId,
         doc_type: docType,
         name: name || file.name,
         file_url: pub.publicUrl,
         uploaded_by: user?.id ?? null,
-      });
+        text_content: textToIndex || null,
+      }).select("id").single();
       if (error) throw error;
       toast.success("Documento subido");
+
+      // Index for RAG if text was provided
+      if (inserted?.id && textToIndex.trim()) {
+        toast.info("Indexando para búsqueda semántica…");
+        const { error: idxErr } = await supabase.functions.invoke("embed-document", {
+          body: { documentId: inserted.id, text: textToIndex },
+        });
+        if (idxErr) toast.error(`Indexación falló: ${idxErr.message}`);
+        else toast.success("Documento indexado en el RAG");
+      }
+
       setDocType("");
       setName("");
+      setTextToIndex("");
       if (inputRef.current) inputRef.current.value = "";
       onOpenChange(false);
       onSaved();
@@ -119,6 +134,18 @@ export const DocumentUploadDialog = ({ open, onOpenChange, onSaved, entityType, 
           <div>
             <Label>Archivo *</Label>
             <Input ref={inputRef} type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg" required />
+          </div>
+          <div>
+            <Label className="flex items-center gap-2">
+              <Sparkles className="h-3.5 w-3.5 text-accent" />
+              Texto para indexar en el RAG (opcional)
+            </Label>
+            <Textarea
+              value={textToIndex}
+              onChange={(e) => setTextToIndex(e.target.value)}
+              placeholder="Pega aquí el contenido del documento para que el agente AI pueda buscarlo semánticamente."
+              rows={5}
+            />
           </div>
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>Cancelar</Button>
