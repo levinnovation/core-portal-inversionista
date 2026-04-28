@@ -7,6 +7,7 @@ import InvestorsList from "./admin/InvestorsList";
 import CustomersList from "./admin/CustomersList";
 import ExcelUpload from "./admin/ExcelUpload";
 import { QuickbasePage, AgentsPage, ReportsPage } from "./admin/Placeholders";
+import AuditLogs from "./admin/AuditLogs";
 
 const AdminPortal = () => (
   <Routes>
@@ -20,6 +21,7 @@ const AdminPortal = () => (
       <Route path="quickbase" element={<QuickbasePage />} />
       <Route path="agentes" element={<AgentsPage />} />
       <Route path="reportes" element={<ReportsPage />} />
+      <Route path="auditoria" element={<AuditLogs />} />
     </Route>
   </Routes>
 );
