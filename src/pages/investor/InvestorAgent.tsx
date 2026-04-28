@@ -110,6 +110,7 @@ const InvestorAgent = () => {
           } catch {/* ignore */}
         }
       }
+      if (assistant) persist("assistant", assistant);
     } catch (e: any) {
       toast.error(e.message);
     } finally {
