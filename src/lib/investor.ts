@@ -11,13 +11,20 @@ export interface PortfolioData {
   projects: any[];
 }
 
-export async function loadPortfolio(userId: string): Promise<PortfolioData> {
-  const { data: investors } = await supabase
-    .from("investors")
-    .select("id")
-    .eq("user_id", userId);
-
-  const investorIds = (investors ?? []).map((i: any) => i.id);
+export async function loadPortfolio(
+  userId: string,
+  opts?: { impersonateInvestorId?: string | null }
+): Promise<PortfolioData> {
+  let investorIds: string[];
+  if (opts?.impersonateInvestorId) {
+    investorIds = [opts.impersonateInvestorId];
+  } else {
+    const { data: investors } = await supabase
+      .from("investors")
+      .select("id")
+      .eq("user_id", userId);
+    investorIds = (investors ?? []).map((i: any) => i.id);
+  }
   if (investorIds.length === 0) {
     return {
       investorIds: [],

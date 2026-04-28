@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
+import { useImpersonation } from "@/hooks/useImpersonation";
 import { CustomerData, fmtDate, fmtUSD, loadCustomerData, paymentStatusLabel } from "@/lib/customer";
 import { Progress } from "@/components/ui/progress";
 import { CheckCircle2, Clock, AlertTriangle, CalendarClock } from "lucide-react";
 
 const CustomerPayments = () => {
   const { user } = useAuth();
+  const { target } = useImpersonation();
   const [data, setData] = useState<CustomerData | null>(null);
 
-  useEffect(() => { if (user) loadCustomerData(user.id).then(setData); }, [user]);
+  useEffect(() => { if (user) loadCustomerData(user.id, { impersonateCustomerId: target?.kind === "customer" ? target.recordId : null }).then(setData); }, [user, target]);
 
   if (!data) return <div className="text-muted-foreground">Cargando…</div>;
   if (!data.customer || data.sales.length === 0) {

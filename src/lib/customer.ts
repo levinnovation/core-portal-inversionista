@@ -9,9 +9,18 @@ export interface CustomerData {
   phases: any[];
 }
 
-export async function loadCustomerData(userId: string): Promise<CustomerData> {
-  const { data: customers } = await supabase.from("customers").select("*").eq("user_id", userId);
-  const customer = customers?.[0] ?? null;
+export async function loadCustomerData(
+  userId: string,
+  opts?: { impersonateCustomerId?: string | null }
+): Promise<CustomerData> {
+  let customer: any | null = null;
+  if (opts?.impersonateCustomerId) {
+    const { data } = await supabase.from("customers").select("*").eq("id", opts.impersonateCustomerId).maybeSingle();
+    customer = data ?? null;
+  } else {
+    const { data: customers } = await supabase.from("customers").select("*").eq("user_id", userId);
+    customer = customers?.[0] ?? null;
+  }
   if (!customer) {
     return { customer: null, sales: [], units: [], projects: [], payments: [], phases: [] };
   }

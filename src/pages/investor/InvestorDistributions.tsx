@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
+import { useImpersonation } from "@/hooks/useImpersonation";
 import { loadPortfolio, fmtUSD, fmtDate } from "@/lib/investor";
 
 const InvestorDistributions = () => {
   const { user } = useAuth();
+  const { target } = useImpersonation();
   const [data, setData] = useState<any | null>(null);
 
   useEffect(() => {
     if (!user) return;
-    loadPortfolio(user.id).then(setData);
-  }, [user]);
+    loadPortfolio(user.id, { impersonateInvestorId: target?.kind === "investor" ? target.recordId : null }).then(setData);
+  }, [user, target]);
 
   if (!data) return <div className="text-muted-foreground">Cargando…</div>;
 
