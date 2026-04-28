@@ -145,6 +145,41 @@ export type Database = {
           },
         ]
       }
+      document_chunks: {
+        Row: {
+          chunk_index: number
+          content: string
+          created_at: string
+          document_id: string
+          embedding: string | null
+          id: string
+        }
+        Insert: {
+          chunk_index: number
+          content: string
+          created_at?: string
+          document_id: string
+          embedding?: string | null
+          id?: string
+        }
+        Update: {
+          chunk_index?: number
+          content?: string
+          created_at?: string
+          document_id?: string
+          embedding?: string | null
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "document_chunks_document_id_fkey"
+            columns: ["document_id"]
+            isOneToOne: false
+            referencedRelation: "documents"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       documents: {
         Row: {
           created_at: string
@@ -153,7 +188,9 @@ export type Database = {
           entity_type: string
           file_url: string
           id: string
+          indexed_at: string | null
           name: string | null
+          text_content: string | null
           uploaded_by: string | null
         }
         Insert: {
@@ -163,7 +200,9 @@ export type Database = {
           entity_type: string
           file_url: string
           id?: string
+          indexed_at?: string | null
           name?: string | null
+          text_content?: string | null
           uploaded_by?: string | null
         }
         Update: {
@@ -173,7 +212,9 @@ export type Database = {
           entity_type?: string
           file_url?: string
           id?: string
+          indexed_at?: string | null
           name?: string | null
+          text_content?: string | null
           uploaded_by?: string | null
         }
         Relationships: []
@@ -645,6 +686,15 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      match_document_chunks: {
+        Args: { match_count?: number; query_embedding: string }
+        Returns: {
+          chunk_id: string
+          content: string
+          document_id: string
+          similarity: number
+        }[]
       }
     }
     Enums: {
