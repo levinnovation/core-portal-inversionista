@@ -10,26 +10,32 @@ import { ArrowLeft, Edit, Plus } from "lucide-react";
 import { ProjectFormDialog } from "@/components/admin/ProjectFormDialog";
 import { PhaseFormDialog } from "@/components/admin/PhaseFormDialog";
 import { UnitFormDialog } from "@/components/admin/UnitFormDialog";
-import { toast } from "sonner";
+import { PhasePhotoUploader } from "@/components/admin/PhasePhotoUploader";
+import { DocumentUploadDialog } from "@/components/admin/DocumentUploadDialog";
+import { FileText, Download, Upload as UploadIcon } from "lucide-react";
 
 const ProjectDetail = () => {
   const { id } = useParams();
   const [project, setProject] = useState<any>(null);
   const [phases, setPhases] = useState<any[]>([]);
   const [units, setUnits] = useState<any[]>([]);
+  const [docs, setDocs] = useState<any[]>([]);
   const [editOpen, setEditOpen] = useState(false);
   const [phaseOpen, setPhaseOpen] = useState(false);
   const [unitOpen, setUnitOpen] = useState(false);
+  const [docOpen, setDocOpen] = useState(false);
 
   const load = async () => {
-    const [p, ph, un] = await Promise.all([
+    const [p, ph, un, dc] = await Promise.all([
       supabase.from("projects").select("*").eq("id", id).maybeSingle(),
       supabase.from("project_phases").select("*").eq("project_id", id).order("order_index"),
       supabase.from("units").select("*").eq("project_id", id).order("unit_number"),
+      supabase.from("documents").select("*").eq("entity_type", "project").eq("entity_id", id!).order("created_at", { ascending: false }),
     ]);
     setProject(p.data);
     setPhases(ph.data ?? []);
     setUnits(un.data ?? []);
+    setDocs(dc.data ?? []);
   };
 
   useEffect(() => { if (id) load(); }, [id]);
@@ -61,6 +67,7 @@ const ProjectDetail = () => {
         <TabsList>
           <TabsTrigger value="phases">Fases de obra ({phases.length})</TabsTrigger>
           <TabsTrigger value="units">Unidades ({units.length})</TabsTrigger>
+          <TabsTrigger value="docs">Documentos ({docs.length})</TabsTrigger>
           <TabsTrigger value="info">Información</TabsTrigger>
         </TabsList>
 
