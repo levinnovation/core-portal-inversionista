@@ -80,12 +80,12 @@ const InvestorDashboard = () => {
 
   return (
     <div className="space-y-8">
-      <div className="grid md:grid-cols-4 gap-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         {kpis.map((kpi) => (
-          <div key={kpi.label} className="bg-card border border-border rounded-lg p-6 shadow-card">
+          <div key={kpi.label} className="bg-card border border-border rounded-lg p-5 shadow-card min-w-0">
             <div className="flex items-center justify-between mb-3 text-accent">{kpi.icon}</div>
-            <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">{kpi.label}</div>
-            <div className="font-display text-3xl text-foreground">{kpi.value}</div>
+            <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1 truncate">{kpi.label}</div>
+            <div className="font-display text-2xl xl:text-3xl text-foreground truncate" title={kpi.value}>{kpi.value}</div>
           </div>
         ))}
       </div>
@@ -128,14 +128,14 @@ const InvestorDashboard = () => {
           <p className="text-sm text-muted-foreground mb-6">Distribución de tu capital.</p>
           {allocData.length > 0 ? (
             <ResponsiveContainer width="100%" height={280}>
-              <PieChart>
-                <Pie data={allocData} dataKey="value" nameKey="name" innerRadius={50} outerRadius={90} paddingAngle={2}>
+              <PieChart margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>
+                <Pie data={allocData} dataKey="value" nameKey="name" cx="50%" cy="42%" innerRadius="42%" outerRadius="72%" paddingAngle={2}>
                   {allocData.map((_, i) => (
                     <Cell key={i} fill={COLORS[i % COLORS.length]} />
                   ))}
                 </Pie>
                 <Tooltip formatter={(v: number) => fmtUSD(v)} contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 8 }} />
-                <Legend wrapperStyle={{ fontSize: 12 }} />
+                <Legend wrapperStyle={{ fontSize: 11 }} verticalAlign="bottom" height={36} iconSize={8} />
               </PieChart>
             </ResponsiveContainer>
           ) : (
