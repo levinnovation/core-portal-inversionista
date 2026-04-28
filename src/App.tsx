@@ -11,6 +11,7 @@ import Onboarding from "./pages/Onboarding";
 import InvestorPortal from "./pages/InvestorPortal";
 import CustomerPortal from "./pages/CustomerPortal";
 import AdminPortal from "./pages/AdminPortal";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/" element={<Landing />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
+            <Route path="/perfil" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
             <Route path="/inversionistas/*" element={<ProtectedRoute allow={["investor", "admin"]}><InvestorPortal /></ProtectedRoute>} />
             <Route path="/clientes/*" element={<ProtectedRoute allow={["customer", "admin"]}><CustomerPortal /></ProtectedRoute>} />
             <Route path="/admin/*" element={<ProtectedRoute allow={["admin"]}><AdminPortal /></ProtectedRoute>} />
