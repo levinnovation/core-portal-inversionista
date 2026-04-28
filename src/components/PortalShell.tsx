@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { LogOut, Menu, X, User } from "lucide-react";
 import { NotificationBell } from "@/components/NotificationBell";
+import { PortalSwitcher } from "@/components/PortalSwitcher";
 
 interface NavItem { to: string; label: string; icon?: ReactNode }
 
@@ -95,7 +96,8 @@ export const PortalShell = ({ title, subtitle, nav, children }: Props) => {
             </button>
             <h1 className="font-display text-xl md:text-3xl text-foreground truncate">{title}</h1>
           </div>
-          <div className="flex items-center text-foreground">
+          <div className="flex items-center gap-2 text-foreground">
+            <PortalSwitcher />
             <NotificationBell />
           </div>
         </header>
