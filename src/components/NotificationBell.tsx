@@ -29,8 +29,8 @@ export const NotificationBell = () => {
       .limit(20)
       .then(({ data }) => setItems((data ?? []) as Notif[]));
 
-    const channel = supabase
-      .channel(`notif-${user.id}`)
+    const channel = supabase.channel(`notif-${user.id}-${Math.random().toString(36).slice(2)}`);
+    channel
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "notifications", filter: `user_id=eq.${user.id}` },
