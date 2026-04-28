@@ -13,4 +13,3 @@ const Placeholder = ({ title, msg }: { title: string; msg: string }) => (
 
 export const QuickbasePage = () => <Placeholder title="Conector QuickBase" msg="La sincronización bidireccional con QuickBase se activará en una fase posterior, una vez compartas las credenciales y el mapeo de campos." />;
 export const AgentsPage = () => <Placeholder title="Agentes AI" msg="Aquí supervisarás las interacciones del agente financiero, su precisión y consumo. Se activa después del portal de inversionistas." />;
-export const ReportsPage = () => <Placeholder title="Reportes & Analytics" msg="ROI por proyecto, capital comprometido, tasa de pagos al día y pipeline de ventas. Próximamente." />;
