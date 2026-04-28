@@ -1,7 +1,9 @@
-import { Activity, Percent, Layers, DollarSign, Info } from "lucide-react";
+import { Activity, Percent, Layers, DollarSign, Info, FileDown, FileText } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
 import { buildCashFlows, cashOnCash, equityMultiple, estimateNOI, fmtMultiple, fmtPct, xirr } from "@/lib/finance";
 import { fmtUSD } from "@/lib/investor";
+import { exportMetricsCSV, exportMetricsPDF } from "@/lib/exportMetrics";
 
 interface Props {
   investments: any[];
@@ -46,9 +48,27 @@ export const AdvancedMetrics = ({ investments, distributions, totalInvested, tot
 
   return (
     <div>
-      <div className="flex items-baseline justify-between mb-4">
-        <h3 className="font-display text-xl">Métricas avanzadas</h3>
-        <span className="text-xs text-muted-foreground">Calculadas sobre tus inversiones y distribuciones reales</span>
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div>
+          <h3 className="font-display text-xl">Métricas avanzadas</h3>
+          <span className="text-xs text-muted-foreground">Calculadas sobre tus inversiones y distribuciones reales</span>
+        </div>
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => exportMetricsCSV({ investments, distributions, totalInvested, totalDistributions })}
+          >
+            <FileDown className="h-4 w-4 mr-1.5" /> CSV
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => exportMetricsPDF({ investments, distributions, totalInvested, totalDistributions })}
+          >
+            <FileText className="h-4 w-4 mr-1.5" /> PDF
+          </Button>
+        </div>
       </div>
       <div className="grid md:grid-cols-4 gap-4">
         <TooltipProvider>
