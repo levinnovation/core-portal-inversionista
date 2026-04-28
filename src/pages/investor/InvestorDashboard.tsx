@@ -3,6 +3,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { loadPortfolio, fmtUSD, PortfolioData } from "@/lib/investor";
 import { TrendingUp, Wallet, Building2, PieChart as PieIcon } from "lucide-react";
 import { AdvancedMetrics } from "@/components/investor/AdvancedMetrics";
+import { MethodologyPanel } from "@/components/investor/MethodologyPanel";
 import {
   ResponsiveContainer,
   LineChart,
