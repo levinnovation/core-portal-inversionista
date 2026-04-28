@@ -73,6 +73,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, [fetchRoles]);
 
   const signOut = async () => {
+    try {
+      sessionStorage.removeItem("core.impersonation.v1");
+    } catch { /* ignore */ }
     await supabase.auth.signOut();
   };
 
