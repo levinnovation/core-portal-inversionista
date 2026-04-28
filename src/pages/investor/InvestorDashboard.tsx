@@ -3,6 +3,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { loadPortfolio, fmtUSD, PortfolioData } from "@/lib/investor";
 import { TrendingUp, Wallet, Building2, PieChart as PieIcon } from "lucide-react";
 import { AdvancedMetrics } from "@/components/investor/AdvancedMetrics";
+import { MethodologyPanel } from "@/components/investor/MethodologyPanel";
 import {
   ResponsiveContainer,
   LineChart,
@@ -93,6 +94,8 @@ const InvestorDashboard = () => {
         totalInvested={data.totalInvested}
         totalDistributions={data.totalDistributions}
       />
+
+      <MethodologyPanel />
 
       <div className="grid lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 bg-card border border-border rounded-lg p-6 shadow-card">
