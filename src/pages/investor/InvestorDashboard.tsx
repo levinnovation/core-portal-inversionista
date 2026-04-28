@@ -95,6 +95,8 @@ const InvestorDashboard = () => {
         totalDistributions={data.totalDistributions}
       />
 
+      <MethodologyPanel />
+
       <div className="grid lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 bg-card border border-border rounded-lg p-6 shadow-card">
           <h3 className="font-display text-xl mb-1">Distribuciones acumuladas</h3>
