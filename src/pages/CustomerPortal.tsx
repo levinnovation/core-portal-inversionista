@@ -1,10 +1,16 @@
+import { Routes, Route, Navigate } from "react-router-dom";
 import { PortalShell } from "@/components/PortalShell";
 import { LayoutDashboard, Home, CreditCard, FileText, Camera } from "lucide-react";
+import CustomerOverview from "./customer/CustomerOverview";
+import CustomerUnit from "./customer/CustomerUnit";
+import CustomerPayments from "./customer/CustomerPayments";
+import CustomerProgress from "./customer/CustomerProgress";
+import CustomerDocuments from "./customer/CustomerDocuments";
 
 const CustomerPortal = () => {
   return (
     <PortalShell
-      title="Mi Apartamento"
+      title="Portal de Clientes"
       subtitle="Clientes"
       nav={[
         { to: "/clientes", label: "Resumen", icon: <LayoutDashboard className="h-4 w-4" /> },
@@ -14,25 +20,14 @@ const CustomerPortal = () => {
         { to: "/clientes/documentos", label: "Documentos", icon: <FileText className="h-4 w-4" /> },
       ]}
     >
-      <div className="grid md:grid-cols-3 gap-6 mb-8">
-        {[
-          { label: "Próximo pago", value: "—" },
-          { label: "Avance de obra", value: "—" },
-          { label: "Pagos al día", value: "—" },
-        ].map((kpi) => (
-          <div key={kpi.label} className="bg-card border border-border rounded-lg p-6 shadow-card">
-            <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{kpi.label}</div>
-            <div className="font-display text-3xl">{kpi.value}</div>
-          </div>
-        ))}
-      </div>
-
-      <div className="bg-card border border-border rounded-lg p-10 shadow-card text-center">
-        <h2 className="font-display text-2xl mb-2">Tu unidad aparecerá aquí</h2>
-        <p className="text-muted-foreground max-w-md mx-auto">
-          Próximamente: timeline de pagos, galería del avance mensual y documentos de tu unidad.
-        </p>
-      </div>
+      <Routes>
+        <Route index element={<CustomerOverview />} />
+        <Route path="unidad" element={<CustomerUnit />} />
+        <Route path="pagos" element={<CustomerPayments />} />
+        <Route path="avance" element={<CustomerProgress />} />
+        <Route path="documentos" element={<CustomerDocuments />} />
+        <Route path="*" element={<Navigate to="/clientes" replace />} />
+      </Routes>
     </PortalShell>
   );
 };
