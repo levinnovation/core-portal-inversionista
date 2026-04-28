@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { ReactNode, useState } from "react";
 import { NotificationBell } from "@/components/NotificationBell";
+import { PortalSwitcher } from "@/components/PortalSwitcher";
 
 const nav = [
   { to: "/admin", label: "Resumen", icon: LayoutDashboard, end: true },
@@ -92,7 +93,10 @@ export const AdminLayout = ({ children }: { children?: ReactNode }) => {
             <Menu className="h-5 w-5" />
           </button>
           <div className="font-display text-lg text-accent">CORE Admin</div>
-          <NotificationBell />
+          <div className="flex items-center gap-2">
+            <PortalSwitcher />
+            <NotificationBell />
+          </div>
         </div>
         {children ?? <Outlet />}
       </main>
@@ -105,7 +109,8 @@ export const AdminPage = ({ title, action, children }: { title: string; action?:
     <header className="px-5 md:px-10 py-5 md:py-6 border-b border-border bg-card flex items-center justify-between gap-4">
       <h1 className="font-display text-2xl md:text-3xl text-foreground">{title}</h1>
       <div className="flex items-center gap-2">
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-2">
+          <PortalSwitcher />
           <NotificationBell />
         </div>
         {action}
