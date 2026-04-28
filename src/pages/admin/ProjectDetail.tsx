@@ -10,26 +10,32 @@ import { ArrowLeft, Edit, Plus } from "lucide-react";
 import { ProjectFormDialog } from "@/components/admin/ProjectFormDialog";
 import { PhaseFormDialog } from "@/components/admin/PhaseFormDialog";
 import { UnitFormDialog } from "@/components/admin/UnitFormDialog";
-import { toast } from "sonner";
+import { PhasePhotoUploader } from "@/components/admin/PhasePhotoUploader";
+import { DocumentUploadDialog } from "@/components/admin/DocumentUploadDialog";
+import { FileText, Download, Upload as UploadIcon } from "lucide-react";
 
 const ProjectDetail = () => {
   const { id } = useParams();
   const [project, setProject] = useState<any>(null);
   const [phases, setPhases] = useState<any[]>([]);
   const [units, setUnits] = useState<any[]>([]);
+  const [docs, setDocs] = useState<any[]>([]);
   const [editOpen, setEditOpen] = useState(false);
   const [phaseOpen, setPhaseOpen] = useState(false);
   const [unitOpen, setUnitOpen] = useState(false);
+  const [docOpen, setDocOpen] = useState(false);
 
   const load = async () => {
-    const [p, ph, un] = await Promise.all([
+    const [p, ph, un, dc] = await Promise.all([
       supabase.from("projects").select("*").eq("id", id).maybeSingle(),
       supabase.from("project_phases").select("*").eq("project_id", id).order("order_index"),
       supabase.from("units").select("*").eq("project_id", id).order("unit_number"),
+      supabase.from("documents").select("*").eq("entity_type", "project").eq("entity_id", id!).order("created_at", { ascending: false }),
     ]);
     setProject(p.data);
     setPhases(ph.data ?? []);
     setUnits(un.data ?? []);
+    setDocs(dc.data ?? []);
   };
 
   useEffect(() => { if (id) load(); }, [id]);
@@ -61,6 +67,7 @@ const ProjectDetail = () => {
         <TabsList>
           <TabsTrigger value="phases">Fases de obra ({phases.length})</TabsTrigger>
           <TabsTrigger value="units">Unidades ({units.length})</TabsTrigger>
+          <TabsTrigger value="docs">Documentos ({docs.length})</TabsTrigger>
           <TabsTrigger value="info">Información</TabsTrigger>
         </TabsList>
 
@@ -87,6 +94,7 @@ const ProjectDetail = () => {
                       {p.estimated_start && `Inicio est: ${new Date(p.estimated_start).toLocaleDateString("es-CO")}`}
                       {p.estimated_end && ` · Fin est: ${new Date(p.estimated_end).toLocaleDateString("es-CO")}`}
                     </div>
+                    <PhasePhotoUploader phaseId={p.id} projectId={project.id} photos={p.photos ?? []} onChange={load} />
                   </div>
                 ))}
               </div>
@@ -126,6 +134,37 @@ const ProjectDetail = () => {
           </div>
         </TabsContent>
 
+        <TabsContent value="docs">
+          <div className="bg-card border border-border rounded-lg p-6 shadow-card">
+            <div className="flex justify-between items-center mb-5">
+              <h3 className="font-display text-xl">Documentos del proyecto</h3>
+              <Button size="sm" onClick={() => setDocOpen(true)} className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <UploadIcon className="h-4 w-4 mr-2" /> Subir documento
+              </Button>
+            </div>
+            {docs.length === 0 ? (
+              <div className="text-muted-foreground text-sm py-8 text-center">No hay documentos subidos</div>
+            ) : (
+              <div className="divide-y divide-border">
+                {docs.map((d) => (
+                  <div key={d.id} className="flex items-center justify-between py-3">
+                    <div className="flex items-center gap-3">
+                      <FileText className="h-5 w-5 text-accent" />
+                      <div>
+                        <div className="font-medium text-sm">{d.name ?? d.doc_type}</div>
+                        <div className="text-xs text-muted-foreground">{d.doc_type} · {new Date(d.created_at).toLocaleDateString("es-CO")}</div>
+                      </div>
+                    </div>
+                    <a href={d.file_url} target="_blank" rel="noreferrer" className="text-sm text-accent hover:underline inline-flex items-center gap-1.5">
+                      <Download className="h-4 w-4" /> Descargar
+                    </a>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </TabsContent>
+
         <TabsContent value="info">
           <div className="bg-card border border-border rounded-lg p-6 shadow-card">
             <p className="text-muted-foreground whitespace-pre-wrap">{project.description ?? "Sin descripción"}</p>
@@ -136,6 +175,7 @@ const ProjectDetail = () => {
       <ProjectFormDialog open={editOpen} onOpenChange={setEditOpen} onSaved={load} project={project} />
       <PhaseFormDialog open={phaseOpen} onOpenChange={setPhaseOpen} onSaved={load} projectId={project.id} nextOrder={phases.length} />
       <UnitFormDialog open={unitOpen} onOpenChange={setUnitOpen} onSaved={load} projectId={project.id} />
+      <DocumentUploadDialog open={docOpen} onOpenChange={setDocOpen} onSaved={load} entityType="project" entityId={project.id} />
     </AdminPage>
   );
 };
