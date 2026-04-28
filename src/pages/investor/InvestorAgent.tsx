@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 import { Send, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
@@ -18,10 +19,38 @@ const SUGGESTIONS = [
 ];
 
 const InvestorAgent = () => {
+  const { user } = useAuth();
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Load chat history (last 50)
+  useEffect(() => {
+    if (!user) return;
+    supabase
+      .from("ai_chat_messages")
+      .select("role, content")
+      .eq("user_id", user.id)
+      .eq("agent", "investor")
+      .order("created_at", { ascending: true })
+      .limit(50)
+      .then(({ data }) => {
+        if (data && data.length) {
+          setMessages(data.map((m: any) => ({ role: m.role, content: m.content })));
+        }
+      });
+  }, [user]);
+
+  const persist = async (role: "user" | "assistant", content: string) => {
+    if (!user) return;
+    await supabase.from("ai_chat_messages").insert({
+      user_id: user.id,
+      agent: "investor",
+      role,
+      content,
+    });
+  };
 
   const send = async (text: string) => {
     if (!text.trim() || streaming) return;
@@ -29,6 +58,7 @@ const InvestorAgent = () => {
     setMessages(newMessages);
     setInput("");
     setStreaming(true);
+    persist("user", text);
 
     try {
       const { data: { session } } = await supabase.auth.getSession();
