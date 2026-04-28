@@ -41,11 +41,11 @@ const AdminOverview = () => {
 
   return (
     <AdminPage title="Panel de Administración">
-      <div className="grid md:grid-cols-4 gap-6 mb-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
         {kpis.map((kpi) => (
-          <div key={kpi.label} className="bg-card border border-border rounded-lg p-6 shadow-card">
-            <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{kpi.label}</div>
-            <div className="font-display text-3xl text-foreground">{kpi.value}</div>
+          <div key={kpi.label} className="bg-card border border-border rounded-lg p-5 shadow-card min-w-0">
+            <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2 truncate">{kpi.label}</div>
+            <div className="font-display text-2xl xl:text-3xl text-foreground truncate" title={kpi.value}>{kpi.value}</div>
           </div>
         ))}
       </div>

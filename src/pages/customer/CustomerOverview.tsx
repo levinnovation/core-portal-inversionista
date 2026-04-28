@@ -61,13 +61,13 @@ const CustomerOverview = () => {
       </div>
 
       {/* KPIs */}
-      <div className="grid md:grid-cols-3 gap-6">
-        <div className="bg-card border border-border rounded-lg p-6 shadow-card">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+        <div className="bg-card border border-border rounded-lg p-5 shadow-card min-w-0">
           <div className="flex items-center justify-between mb-3 text-accent"><CreditCard className="h-5 w-5" /></div>
-          <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Próximo pago</div>
+          <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1 truncate">Próximo pago</div>
           {nextPayment ? (
             <>
-              <div className="font-display text-3xl">{fmtUSD(Number(nextPayment.amount))}</div>
+              <div className="font-display text-2xl xl:text-3xl truncate" title={fmtUSD(Number(nextPayment.amount))}>{fmtUSD(Number(nextPayment.amount))}</div>
               <div className="text-sm text-muted-foreground mt-1">{fmtDate(nextPayment.due_date)}</div>
             </>
           ) : (
@@ -75,18 +75,18 @@ const CustomerOverview = () => {
           )}
         </div>
 
-        <div className="bg-card border border-border rounded-lg p-6 shadow-card">
+        <div className="bg-card border border-border rounded-lg p-5 shadow-card min-w-0">
           <div className="flex items-center justify-between mb-3 text-accent"><Hammer className="h-5 w-5" /></div>
-          <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Avance de obra</div>
-          <div className="font-display text-3xl">{overall.toFixed(0)}%</div>
+          <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1 truncate">Avance de obra</div>
+          <div className="font-display text-2xl xl:text-3xl">{overall.toFixed(0)}%</div>
           <Progress value={overall} className="h-1.5 mt-3" />
         </div>
 
-        <div className="bg-card border border-border rounded-lg p-6 shadow-card">
+        <div className="bg-card border border-border rounded-lg p-5 shadow-card min-w-0">
           <div className="flex items-center justify-between mb-3 text-accent"><CheckCircle2 className="h-5 w-5" /></div>
-          <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Capital pagado</div>
-          <div className="font-display text-3xl">{pctPaid.toFixed(0)}%</div>
-          <div className="text-sm text-muted-foreground mt-1">{fmtUSD(totalPaid)} de {fmtUSD(totalDue)}</div>
+          <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1 truncate">Capital pagado</div>
+          <div className="font-display text-2xl xl:text-3xl">{pctPaid.toFixed(0)}%</div>
+          <div className="text-sm text-muted-foreground mt-1 truncate" title={`${fmtUSD(totalPaid)} de ${fmtUSD(totalDue)}`}>{fmtUSD(totalPaid)} de {fmtUSD(totalDue)}</div>
         </div>
       </div>
 

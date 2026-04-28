@@ -52,10 +52,10 @@ const InvestorProjects = () => {
           : 0;
         return (
           <div key={p.id} className="bg-card border border-border rounded-lg p-6 shadow-card">
-            <div className="flex items-start justify-between mb-4">
-              <div>
-                <h3 className="font-display text-2xl mb-1">{p.name}</h3>
-                <div className="flex gap-4 text-sm text-muted-foreground">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+              <div className="min-w-0 flex-1">
+                <h3 className="font-display text-2xl mb-1 truncate">{p.name}</h3>
+                <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
                   {p.location && <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" />{p.location}</span>}
                   {p.estimated_delivery && (
                     <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" />Entrega: {new Date(p.estimated_delivery).toLocaleDateString("es-CO")}</span>
@@ -63,9 +63,9 @@ const InvestorProjects = () => {
                   <span className="capitalize px-2 py-0.5 rounded bg-accent/10 text-accent text-xs">{p.status}</span>
                 </div>
               </div>
-              <div className="text-right">
+              <div className="text-left sm:text-right shrink-0">
                 <div className="text-xs uppercase tracking-wider text-muted-foreground">Mi capital</div>
-                <div className="font-display text-2xl">{fmtUSD(myCapital)}</div>
+                <div className="font-display text-2xl truncate" title={fmtUSD(myCapital)}>{fmtUSD(myCapital)}</div>
               </div>
             </div>
 
