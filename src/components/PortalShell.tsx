@@ -97,7 +97,7 @@ export const PortalShell = ({ title, subtitle, nav, children }: Props) => {
             </button>
             <h1 className="font-display text-xl md:text-3xl text-foreground truncate">{title}</h1>
           </div>
-          <div className="flex items-center gap-2 text-foreground">
+          <div className="flex items-center gap-1.5 sm:gap-2 text-foreground shrink-0">
             <PortalSwitcher />
             <ImpersonateMenu />
             <NotificationBell />

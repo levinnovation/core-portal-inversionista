@@ -51,7 +51,7 @@ const CustomerOverview = () => {
       {/* Hero */}
       <div className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground rounded-lg p-8 shadow-card">
         <div className="text-xs uppercase tracking-[0.2em] text-primary-foreground/70 mb-2">Tu apartamento</div>
-        <h2 className="font-display text-4xl mb-2">{project?.name ?? "—"}</h2>
+        <h2 className="font-display text-2xl sm:text-4xl mb-2 break-words">{project?.name ?? "—"}</h2>
         <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-primary-foreground/80">
           <span>Unidad <strong className="text-primary-foreground">{unit?.unit_number}</strong></span>
           {unit?.floor !== null && <span>Piso <strong className="text-primary-foreground">{unit?.floor}</strong></span>}

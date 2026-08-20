@@ -53,7 +53,7 @@ export const PhaseFormDialog = ({ open, onOpenChange, onSaved, projectId, nextOr
             <Label>% Avance</Label>
             <Input type="number" min={0} max={100} value={form.completion_percentage} onChange={(e) => setForm({ ...form, completion_percentage: Number(e.target.value) })} />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div><Label>Inicio estimado</Label><Input type="date" value={form.estimated_start} onChange={(e) => setForm({ ...form, estimated_start: e.target.value })} /></div>
             <div><Label>Fin estimado</Label><Input type="date" value={form.estimated_end} onChange={(e) => setForm({ ...form, estimated_end: e.target.value })} /></div>
           </div>

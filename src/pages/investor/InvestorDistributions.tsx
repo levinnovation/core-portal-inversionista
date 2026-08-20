@@ -24,7 +24,7 @@ const InvestorDistributions = () => {
     <div className="space-y-6">
       <div className="bg-card border border-border rounded-lg p-6 shadow-card">
         <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Total recibido</div>
-        <div className="font-display text-4xl">{fmtUSD(total)}</div>
+        <div className="font-display text-3xl sm:text-4xl truncate">{fmtUSD(total)}</div>
       </div>
 
       <div className="bg-card border border-border rounded-lg shadow-card overflow-hidden">
@@ -34,7 +34,8 @@ const InvestorDistributions = () => {
         {sorted.length === 0 ? (
           <div className="p-10 text-center text-muted-foreground">Aún no hay distribuciones registradas.</div>
         ) : (
-          <table className="w-full text-sm">
+          <div className="overflow-x-auto">
+          <table className="w-full text-sm min-w-[640px]">
             <thead className="bg-subtle">
               <tr className="text-left text-muted-foreground">
                 <th className="px-6 py-3 font-medium">Fecha</th>
@@ -60,6 +61,7 @@ const InvestorDistributions = () => {
               })}
             </tbody>
           </table>
+          </div>
         )}
       </div>
     </div>

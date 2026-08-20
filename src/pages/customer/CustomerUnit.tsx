@@ -36,12 +36,12 @@ const CustomerUnit = () => {
         <div className="flex items-start justify-between mb-6">
           <div>
             <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-1">{project?.name}</div>
-            <h2 className="font-display text-3xl">Unidad {unit?.unit_number}</h2>
+            <h2 className="font-display text-2xl sm:text-3xl break-words">Unidad {unit?.unit_number}</h2>
             {project?.location && <p className="text-sm text-muted-foreground mt-1 flex items-center gap-1"><MapPin className="h-3.5 w-3.5" />{project.location}</p>}
           </div>
           <div className="text-right">
             <div className="text-xs uppercase tracking-wider text-muted-foreground">Precio acordado</div>
-            <div className="font-display text-3xl">{fmtUSD(Number(sale.price_agreed))}</div>
+            <div className="font-display text-2xl sm:text-3xl break-words">{fmtUSD(Number(sale.price_agreed))}</div>
           </div>
         </div>
 

@@ -33,7 +33,7 @@ export const CustomerFormDialog = ({ open, onOpenChange, onSaved }: { open: bool
         <DialogHeader><DialogTitle className="font-display text-2xl">Nuevo cliente</DialogTitle></DialogHeader>
         <form onSubmit={submit} className="space-y-4">
           <div><Label>Nombre completo *</Label><Input required value={form.full_name} onChange={(e) => setForm({ ...form, full_name: e.target.value })} /></div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div><Label>Email</Label><Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} /></div>
             <div><Label>Teléfono</Label><Input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} /></div>
           </div>

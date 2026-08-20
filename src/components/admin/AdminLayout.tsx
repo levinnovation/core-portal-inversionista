@@ -108,9 +108,9 @@ export const AdminLayout = ({ children }: { children?: ReactNode }) => {
 export const AdminPage = ({ title, action, children }: { title: string; action?: ReactNode; children: ReactNode }) => (
   <>
     <header className="px-5 md:px-10 py-5 md:py-6 border-b border-border bg-card flex items-center justify-between gap-4">
-      <h1 className="font-display text-2xl md:text-3xl text-foreground">{title}</h1>
-      <div className="flex items-center gap-2">
-        <div className="hidden md:flex items-center gap-2">
+      <h1 className="font-display text-xl md:text-3xl text-foreground truncate min-w-0">{title}</h1>
+      <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-2">
           <PortalSwitcher />
           <NotificationBell />
         </div>

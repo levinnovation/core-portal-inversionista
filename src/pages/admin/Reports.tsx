@@ -412,7 +412,7 @@ const Reports = () => {
             <h3 className="font-display text-xl">Desempeño por proyecto</h3>
           </div>
           <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+            <table className="w-full text-sm min-w-[760px]">
               <thead className="bg-subtle">
                 <tr className="text-left text-muted-foreground">
                   <th className="px-6 py-3 font-medium">Proyecto</th>

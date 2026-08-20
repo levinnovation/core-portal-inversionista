@@ -74,7 +74,7 @@ export const SaleFormDialog = ({ open, onOpenChange, onSaved, customerId }: Prop
               </SelectContent>
             </Select>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div><Label>Precio acordado (USD) *</Label><Input type="number" required value={form.price_agreed} onChange={(e) => setForm({ ...form, price_agreed: e.target.value })} /></div>
             <div><Label>Fecha *</Label><Input type="date" required value={form.sale_date} onChange={(e) => setForm({ ...form, sale_date: e.target.value })} /></div>
             <div><Label>Banco financiador</Label><Input value={form.financing_bank} onChange={(e) => setForm({ ...form, financing_bank: e.target.value })} /></div>
