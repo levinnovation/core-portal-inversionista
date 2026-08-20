@@ -6,7 +6,13 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider } from "@/hooks/useAuth";
 import { ImpersonationProvider } from "@/hooks/useImpersonation";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
-import Landing from "./pages/Landing";
+import { PublicLayout } from "@/components/public/PublicLayout";
+import Home from "./pages/public/Home";
+import Opportunities from "./pages/public/Opportunities";
+import HowToInvest from "./pages/public/HowToInvest";
+import About from "./pages/public/About";
+import Faq from "./pages/public/Faq";
+import Contact from "./pages/public/Contact";
 import Auth from "./pages/Auth";
 import ResetPassword from "./pages/ResetPassword";
 import Onboarding from "./pages/Onboarding";
@@ -27,7 +33,14 @@ const App = () => (
         <AuthProvider>
           <ImpersonationProvider>
             <Routes>
-              <Route path="/" element={<Landing />} />
+              <Route element={<PublicLayout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/oportunidades" element={<Opportunities />} />
+                <Route path="/como-invertir" element={<HowToInvest />} />
+                <Route path="/nosotros" element={<About />} />
+                <Route path="/faq" element={<Faq />} />
+                <Route path="/contacto" element={<Contact />} />
+              </Route>
               <Route path="/auth" element={<Auth />} />
               <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />

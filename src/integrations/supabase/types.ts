@@ -306,6 +306,51 @@ export type Database = {
         }
         Relationships: []
       }
+      leads: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          interest_amount: number | null
+          message: string | null
+          notes: string | null
+          phone: string | null
+          project_interest: string | null
+          source: string
+          status: Database["public"]["Enums"]["lead_status"]
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          interest_amount?: number | null
+          message?: string | null
+          notes?: string | null
+          phone?: string | null
+          project_interest?: string | null
+          source?: string
+          status?: Database["public"]["Enums"]["lead_status"]
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          interest_amount?: number | null
+          message?: string | null
+          notes?: string | null
+          phone?: string | null
+          project_interest?: string | null
+          source?: string
+          status?: Database["public"]["Enums"]["lead_status"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
       notifications: {
         Row: {
           body: string | null
@@ -705,6 +750,7 @@ export type Database = {
         | "carried_interest"
         | "return_of_capital"
       investment_type: "equity" | "debt" | "preferred"
+      lead_status: "new" | "contacted" | "qualified" | "discarded"
       payment_status: "pending" | "paid" | "overdue"
       project_status:
         | "planning"
@@ -847,6 +893,7 @@ export const Constants = {
         "return_of_capital",
       ],
       investment_type: ["equity", "debt", "preferred"],
+      lead_status: ["new", "contacted", "qualified", "discarded"],
       payment_status: ["pending", "paid", "overdue"],
       project_status: [
         "planning",
