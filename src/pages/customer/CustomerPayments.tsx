@@ -57,7 +57,7 @@ const CustomerPayments = () => {
           <div className="flex items-center justify-between">
             <div>
               <div className="text-xs uppercase tracking-[0.2em] text-accent mb-1">Próximo pago</div>
-              <div className="font-display text-3xl">{fmtUSD(Number(next.amount))}</div>
+              <div className="font-display text-2xl sm:text-3xl">{fmtUSD(Number(next.amount))}</div>
               <div className="text-sm text-muted-foreground mt-1 flex items-center gap-1.5">
                 <CalendarClock className="h-3.5 w-3.5" /> Vence el {fmtDate(next.due_date)}
               </div>

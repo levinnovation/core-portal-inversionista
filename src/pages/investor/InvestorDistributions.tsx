@@ -24,7 +24,7 @@ const InvestorDistributions = () => {
     <div className="space-y-6">
       <div className="bg-card border border-border rounded-lg p-6 shadow-card">
         <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Total recibido</div>
-        <div className="font-display text-4xl">{fmtUSD(total)}</div>
+        <div className="font-display text-3xl sm:text-4xl truncate">{fmtUSD(total)}</div>
       </div>
 
       <div className="bg-card border border-border rounded-lg shadow-card overflow-hidden">

@@ -35,7 +35,7 @@ const CustomerProgress = () => {
     <div className="space-y-6">
       <div className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground rounded-lg p-8 shadow-card">
         <div className="text-xs uppercase tracking-[0.2em] text-primary-foreground/70 mb-1">Avance de obra</div>
-        <h2 className="font-display text-3xl mb-4">{project.name}</h2>
+        <h2 className="font-display text-2xl sm:text-3xl mb-4 break-words">{project.name}</h2>
         <div className="flex justify-between text-sm mb-2">
           <span>Avance general</span>
           <span className="font-mono text-2xl font-display">{overall.toFixed(0)}%</span>

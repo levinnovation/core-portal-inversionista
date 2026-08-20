@@ -75,7 +75,7 @@ const LeadsList = () => {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="font-display text-3xl">Prospectos</h1>
+          <h1 className="font-display text-2xl sm:text-3xl">Prospectos</h1>
           <p className="text-muted-foreground text-sm mt-1">
             Solicitudes de acceso y mensajes recibidos desde el sitio público.
           </p>
