@@ -4,6 +4,7 @@ import { ArrowRight, Check } from "lucide-react";
 import hero from "@/assets/hero-tower.jpg";
 import { useSeo } from "@/components/public/PublicLayout";
 import { useLeadDialog } from "@/components/public/LeadDialog";
+import { PortalMock } from "@/components/public/PortalMock";
 import {
   SectionHeading, StatsBar, OpportunityCard, HowItWorks, Testimonials, FaqAccordion, CtaBand,
 } from "@/components/public/Sections";
