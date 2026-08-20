@@ -32,6 +32,23 @@ const Auth = () => {
     if (error) toast.error(error.message);
   };
 
+  const handleReset = async () => {
+    if (!email) {
+      toast.error("Escribe tu email primero");
+      return;
+    }
+    setBusy(true);
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    setBusy(false);
+    if (error) toast.error(error.message);
+    else {
+      toast.success("Te enviamos un correo con el código y el enlace de recuperación.");
+      nav(`/reset-password?email=${encodeURIComponent(email)}`);
+    }
+  };
+
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setBusy(true);
@@ -47,6 +64,7 @@ const Auth = () => {
     if (error) toast.error(error.message);
     else toast.success("Cuenta creada. Revisa tu correo para verificar.");
   };
+
 
   return (
     <div className="min-h-screen flex bg-subtle">
