@@ -57,8 +57,9 @@ export const PublicFooter = () => (
     <div className="max-w-7xl mx-auto px-6 pb-10 grid gap-6 md:grid-cols-2 text-sm text-primary-foreground/60">
       <div>
         <div>{contactInfo.address}</div>
-        <div>{contactInfo.email} · {contactInfo.phone}</div>
+        <div>{contactInfo.email} · {contactInfo.site}</div>
       </div>
+
       <p className="md:text-right leading-relaxed">
         Toda inversión inmobiliaria implica riesgo, incluida la pérdida de capital. Los retornos
         objetivo son proyecciones y no constituyen una garantía de rendimiento. La información de este

@@ -3,15 +3,15 @@ import { Button } from "@/components/ui/button";
 import { useSeo } from "@/components/public/PublicLayout";
 import { useLeadDialog } from "@/components/public/LeadDialog";
 import { SectionHeading, CtaBand } from "@/components/public/Sections";
-import { opportunities } from "@/content/site";
-import { Check } from "lucide-react";
+import { opportunities, soldProjects } from "@/content/site";
+import { Check, ExternalLink } from "lucide-react";
 
 const ALL = "Todos";
 
 const Opportunities = () => {
   useSeo(
-    "Oportunidades de inversión inmobiliaria | Core",
-    "Conoce los desarrollos inmobiliarios abiertos a inversión con Core: ticket mínimo, retorno objetivo, plazo y avance de obra de cada proyecto."
+    "Proyectos de inversión Core | Babylon, SIIX, URBN, SECRT y SLVA",
+    "Conocé los proyectos de Core abiertos hoy: Babylon apart-hotel, SIIX Nunciatura, URBN Nunciatura, SECRT Escalante y las últimas unidades de SLVA Guachipelín."
   );
   const { open } = useLeadDialog();
   const [city, setCity] = useState(ALL);
@@ -53,13 +53,14 @@ const Opportunities = () => {
     <>
       <section className="bg-hero text-primary-foreground">
         <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="text-accent text-xs tracking-[0.3em] uppercase mb-4">Oportunidades</div>
+          <div className="text-accent text-xs tracking-[0.3em] uppercase mb-4">Proyectos</div>
           <h1 className="font-display text-4xl md:text-5xl max-w-2xl leading-tight">
-            Desarrollos abiertos a inversión
+            Hábitat urbano abierto a inversión
           </h1>
           <p className="text-primary-foreground/75 max-w-2xl mt-5 leading-relaxed">
-            Cada proyecto pasa por comité de inversión, due diligence legal y validación financiera.
-            El expediente completo está disponible dentro del portal para inversionistas verificados.
+            Residencial urbano y hospitality en San José y Escazú. Las condiciones económicas y la
+            disponibilidad por tipología se conversan con el equipo comercial de Core y quedan en el
+            expediente de tu inversión dentro del portal.
           </p>
         </div>
       </section>
@@ -79,26 +80,27 @@ const Opportunities = () => {
               <article key={o.slug} className="grid md:grid-cols-[380px_1fr] gap-0 bg-card border border-border rounded-lg overflow-hidden shadow-card">
                 <img src={o.image} alt={`${o.name}, ${o.location}`} loading="lazy" width={1280} height={860} className="w-full h-56 md:h-full object-cover" />
                 <div className="p-7 min-w-0">
-                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
                     <span className="bg-accent-soft text-accent-foreground text-xs px-3 py-1 rounded-full">{o.stage}</span>
                     <span className="text-xs text-muted-foreground">{o.type}</span>
                   </div>
+                  <img src={o.logo} alt={`Logo ${o.name}`} loading="lazy" className="h-8 w-auto object-contain mb-3 brightness-0 opacity-85" />
                   <h2 className="font-display text-3xl mb-1">{o.name}</h2>
-                  <div className="text-sm text-muted-foreground mb-4">{o.location}</div>
+                  <div className="text-sm text-muted-foreground mb-1">{o.location}</div>
+                  <div className="text-xs uppercase tracking-[0.2em] text-accent mb-4">{o.tagline}</div>
                   <p className="text-muted-foreground leading-relaxed mb-6">{o.summary}</p>
 
-                  <dl className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-                    {[
-                      { k: "Ticket mínimo", v: o.minTicket },
-                      { k: "Retorno objetivo", v: o.targetReturn },
-                      { k: "Plazo", v: o.term },
-                      { k: "Avance", v: `${o.progress}%` },
-                    ].map((m) => (
-                      <div key={m.k} className="min-w-0">
-                        <dt className="text-[10px] uppercase tracking-wider text-muted-foreground">{m.k}</dt>
-                        <dd className="font-display text-lg truncate">{m.v}</dd>
+                  <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                    <div className="min-w-0">
+                      <dt className="text-[10px] uppercase tracking-wider text-muted-foreground">Modelo</dt>
+                      <dd className="text-sm">{o.model}</dd>
+                    </div>
+                    {o.units && (
+                      <div className="min-w-0">
+                        <dt className="text-[10px] uppercase tracking-wider text-muted-foreground">Unidades</dt>
+                        <dd className="text-sm">{o.units}</dd>
                       </div>
-                    ))}
+                    )}
                   </dl>
 
                   <ul className="grid sm:grid-cols-2 gap-2 mb-6">
@@ -110,9 +112,34 @@ const Opportunities = () => {
                     ))}
                   </ul>
 
-                  <Button onClick={() => open(`oportunidad:${o.slug}`)} className="bg-primary text-primary-foreground hover:bg-primary-glow">
-                    Solicitar información
-                  </Button>
+                  {o.publishedFigures && (
+                    <div className="rounded-lg bg-subtle border border-border p-5 mb-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        {o.publishedFigures.map((f) => (
+                          <div key={f.label} className="min-w-0">
+                            <div className="font-display text-2xl text-primary">{f.value}</div>
+                            <div className="text-xs text-muted-foreground leading-snug mt-1">{f.label}</div>
+                          </div>
+                        ))}
+                      </div>
+                      {o.figuresNote && (
+                        <p className="text-[11px] text-muted-foreground leading-relaxed mt-4">{o.figuresNote}</p>
+                      )}
+                    </div>
+                  )}
+
+                  <div className="flex flex-wrap gap-3">
+                    <Button onClick={() => open(`oportunidad:${o.slug}`)} className="bg-primary text-primary-foreground hover:bg-primary-glow">
+                      Solicitar información
+                    </Button>
+                    {o.site && (
+                      <a href={o.site} target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline">
+                          Sitio del proyecto <ExternalLink className="ml-2 h-4 w-4" />
+                        </Button>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </article>
             ))}
@@ -120,9 +147,27 @@ const Opportunities = () => {
         )}
       </section>
 
+      <section className="py-16 px-6 bg-subtle">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeading eyebrow="Track record" title="Proyectos vendidos" />
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {soldProjects.map((c) => (
+              <article key={c.slug} className="bg-card border border-border rounded-lg overflow-hidden shadow-card">
+                <img src={c.image} alt={`${c.name}, ${c.location}`} loading="lazy" className="w-full h-40 object-cover" />
+                <div className="p-6">
+                  <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">{c.location}</div>
+                  <h3 className="font-display text-xl mb-2">{c.name}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{c.summary}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CtaBand
-        title="¿Listo para revisar el expediente completo?"
-        body="Los inversionistas verificados acceden a financieros, permisos y proyecciones de cada proyecto."
+        title="¿Querés el expediente completo de un proyecto?"
+        body="Solicitá acceso y un ejecutivo de Core te comparte planos, tipologías, modelo de operación y condiciones."
         source="oportunidades"
       />
     </>

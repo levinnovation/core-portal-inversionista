@@ -30,10 +30,11 @@ export const PortalMock = ({ variant }: { variant: 0 | 1 | 2 }) => {
         </div>
         <div className="space-y-2.5">
           {[
-            { n: "Torre Central", p: 46 },
-            { n: "Altavista Residences", p: 31 },
-            { n: "Distrito Comercial", p: 23 },
+            { n: "Babylon", p: 46 },
+            { n: "URBN Nunciatura", p: 31 },
+            { n: "SECRT Escalante", p: 23 },
           ].map((r) => (
+
             <div key={r.n}>
               <div className="flex justify-between text-[11px] text-muted-foreground mb-1">
                 <span className="truncate">{r.n}</span><span>{r.p}%</span>

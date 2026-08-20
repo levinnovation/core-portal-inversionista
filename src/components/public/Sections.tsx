@@ -36,39 +36,34 @@ export const StatsBar = ({ items }: { items: { value: string; label: string }[] 
 
 export const OpportunityCard = ({ o }: { o: Opportunity }) => (
   <article className="bg-card border border-border rounded-lg overflow-hidden shadow-card hover:shadow-elegant transition-shadow flex flex-col">
-    <div className="relative h-48 overflow-hidden">
+    <div className="relative h-52 overflow-hidden">
       <img src={o.image} alt={`${o.name}, ${o.location}`} loading="lazy" width={1280} height={860} className="w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent" />
       <span className="absolute top-3 left-3 bg-primary/90 text-primary-foreground text-xs px-3 py-1 rounded-full">{o.stage}</span>
+      <img src={o.logo} alt={`Logo ${o.name}`} loading="lazy" className="absolute bottom-3 left-4 h-8 w-auto max-w-[55%] object-contain brightness-0 invert" />
     </div>
     <div className="p-6 flex-1 flex flex-col">
+      <div className="text-xs uppercase tracking-[0.2em] text-accent mb-2">{o.tagline}</div>
       <h3 className="font-display text-2xl mb-1">{o.name}</h3>
       <div className="text-sm text-muted-foreground mb-4">{o.location} · {o.type}</div>
       <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">{o.summary}</p>
 
-      <dl className="grid grid-cols-3 gap-3 mb-5 text-center">
-        {[
-          { k: "Ticket mínimo", v: o.minTicket },
-          { k: "Objetivo", v: o.targetReturn },
-          { k: "Plazo", v: o.term },
-        ].map((m) => (
-          <div key={m.k} className="min-w-0">
-            <dt className="text-[10px] uppercase tracking-wider text-muted-foreground">{m.k}</dt>
-            <dd className="text-sm font-medium truncate">{m.v}</dd>
+      <dl className="space-y-2 pt-4 border-t border-border text-sm">
+        <div className="flex gap-3 justify-between">
+          <dt className="text-muted-foreground shrink-0">Modelo</dt>
+          <dd className="text-right min-w-0">{o.model}</dd>
+        </div>
+        {o.units && (
+          <div className="flex gap-3 justify-between">
+            <dt className="text-muted-foreground shrink-0">Unidades</dt>
+            <dd className="text-right min-w-0">{o.units}</dd>
           </div>
-        ))}
+        )}
       </dl>
-
-      <div>
-        <div className="flex justify-between text-xs text-muted-foreground mb-1.5">
-          <span>Avance</span><span>{o.progress}%</span>
-        </div>
-        <div className="h-1.5 rounded-full bg-muted overflow-hidden">
-          <div className="h-full bg-gold rounded-full" style={{ width: `${o.progress}%` }} />
-        </div>
-      </div>
     </div>
   </article>
 );
+
 
 export const HowItWorks = ({ steps }: { steps: { step: string; title: string; body: string }[] }) => (
   <div className="grid md:grid-cols-4 gap-6">
