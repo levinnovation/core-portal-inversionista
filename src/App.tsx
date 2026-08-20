@@ -8,6 +8,7 @@ import { ImpersonationProvider } from "@/hooks/useImpersonation";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import Landing from "./pages/Landing";
 import Auth from "./pages/Auth";
+import ResetPassword from "./pages/ResetPassword";
 import Onboarding from "./pages/Onboarding";
 import InvestorPortal from "./pages/InvestorPortal";
 import CustomerPortal from "./pages/CustomerPortal";
@@ -28,6 +29,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/auth" element={<Auth />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
               <Route path="/perfil" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
               <Route path="/inversionistas/*" element={<ProtectedRoute allow={["investor", "admin"]}><InvestorPortal /></ProtectedRoute>} />

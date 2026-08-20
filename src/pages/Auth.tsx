@@ -32,6 +32,23 @@ const Auth = () => {
     if (error) toast.error(error.message);
   };
 
+  const handleReset = async () => {
+    if (!email) {
+      toast.error("Escribe tu email primero");
+      return;
+    }
+    setBusy(true);
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    setBusy(false);
+    if (error) toast.error(error.message);
+    else {
+      toast.success("Te enviamos un correo con el código y el enlace de recuperación.");
+      nav(`/reset-password?email=${encodeURIComponent(email)}`);
+    }
+  };
+
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setBusy(true);
@@ -47,6 +64,7 @@ const Auth = () => {
     if (error) toast.error(error.message);
     else toast.success("Cuenta creada. Revisa tu correo para verificar.");
   };
+
 
   return (
     <div className="min-h-screen flex bg-subtle">
@@ -80,7 +98,17 @@ const Auth = () => {
                   <Input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div>
-                  <Label>Contraseña</Label>
+                  <div className="flex items-center justify-between">
+                    <Label>Contraseña</Label>
+                    <button
+                      type="button"
+                      onClick={handleReset}
+                      disabled={busy}
+                      className="text-xs text-muted-foreground hover:text-primary underline underline-offset-2"
+                    >
+                      ¿Olvidaste tu contraseña?
+                    </button>
+                  </div>
                   <Input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <Button type="submit" disabled={busy} className="w-full bg-primary text-primary-foreground hover:bg-primary-glow">
