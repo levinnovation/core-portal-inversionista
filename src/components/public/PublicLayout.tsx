@@ -8,12 +8,12 @@ export const useSeo = (title: string, description: string) => {
   useEffect(() => {
     document.title = title;
     const set = (selector: string, attr: string, value: string) => {
-      let el = document.head.querySelector(selector) as HTMLMetaElement | HTMLLinkElement | null;
+      let el = document.head.querySelector(selector) as HTMLElement | null;
       if (!el) {
-        el = document.createElement(selector.startsWith("link") ? "link" : "meta") as HTMLMetaElement;
+        el = document.createElement(selector.startsWith("link") ? "link" : "meta");
         if (selector.includes("property=")) el.setAttribute("property", selector.split('"')[1]);
         else if (selector.includes("name=")) el.setAttribute("name", selector.split('"')[1]);
-        else if (selector.startsWith("link")) (el as HTMLLinkElement).rel = "canonical";
+        else if (selector.startsWith("link")) el.setAttribute("rel", "canonical");
         document.head.appendChild(el);
       }
       el.setAttribute(attr, value);
