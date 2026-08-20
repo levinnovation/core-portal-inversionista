@@ -60,7 +60,7 @@ export const InvestmentFormDialog = ({ open, onOpenChange, onSaved, investorId }
               </SelectContent>
             </Select>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div><Label>Monto invertido (USD) *</Label><Input type="number" required value={form.amount_invested} onChange={(e) => setForm({ ...form, amount_invested: e.target.value })} /></div>
             <div><Label>Fecha *</Label><Input type="date" required value={form.investment_date} onChange={(e) => setForm({ ...form, investment_date: e.target.value })} /></div>
             <div>

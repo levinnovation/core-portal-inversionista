@@ -46,7 +46,7 @@ export const UnitFormDialog = ({ open, onOpenChange, onSaved, projectId }: Props
       <DialogContent>
         <DialogHeader><DialogTitle className="font-display text-2xl">Añadir unidad</DialogTitle></DialogHeader>
         <form onSubmit={submit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div><Label>Número *</Label><Input required value={form.unit_number} onChange={(e) => setForm({ ...form, unit_number: e.target.value })} /></div>
             <div><Label>Piso</Label><Input type="number" value={form.floor} onChange={(e) => setForm({ ...form, floor: e.target.value })} /></div>
             <div><Label>Área (m²)</Label><Input type="number" value={form.sqft} onChange={(e) => setForm({ ...form, sqft: e.target.value })} /></div>
