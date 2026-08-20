@@ -1,20 +1,21 @@
 import { useSeo } from "@/components/public/PublicLayout";
 import { LeadForm } from "@/components/public/LeadDialog";
 import { contactInfo } from "@/content/site";
-import { MapPin, Mail, Phone, Clock } from "lucide-react";
+import { MapPin, Mail, Globe, Clock } from "lucide-react";
 
 const Contact = () => {
   useSeo(
     "Contacto | Core",
-    "Contacta al equipo de relación con inversionistas de Core para conocer las oportunidades disponibles y el proceso de acceso al portal."
+    "Contacta al equipo de Core para conocer los proyectos disponibles y el acceso a PortalCore."
   );
 
   const info = [
     { icon: MapPin, label: "Oficina", value: contactInfo.address },
     { icon: Mail, label: "Email", value: contactInfo.email },
-    { icon: Phone, label: "Teléfono", value: contactInfo.phone },
+    { icon: Globe, label: "Sitio de marca", value: contactInfo.site },
     { icon: Clock, label: "Horario", value: contactInfo.hours },
   ];
+
 
   return (
     <>
