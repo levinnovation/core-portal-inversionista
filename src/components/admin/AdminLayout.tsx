@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import {
   LogOut, LayoutDashboard, Building2, Users, ShoppingBag,
-  Upload, RefreshCw, Bot, BarChart3, Menu, X, User, ShieldCheck,
+  Upload, RefreshCw, Bot, BarChart3, Menu, X, User, ShieldCheck, UserPlus,
 } from "lucide-react";
 import { ReactNode, useState } from "react";
 import { NotificationBell } from "@/components/NotificationBell";
@@ -14,6 +14,7 @@ const nav = [
   { to: "/admin/proyectos", label: "Proyectos", icon: Building2 },
   { to: "/admin/inversionistas", label: "Inversionistas", icon: Users },
   { to: "/admin/clientes", label: "Clientes", icon: ShoppingBag },
+  { to: "/admin/prospectos", label: "Prospectos", icon: UserPlus },
   { to: "/admin/excel", label: "Carga Excel", icon: Upload },
   { to: "/admin/quickbase", label: "QuickBase", icon: RefreshCw },
   { to: "/admin/agentes", label: "Agentes AI", icon: Bot },
