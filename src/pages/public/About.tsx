@@ -76,13 +76,14 @@ const About = () => {
       </section>
 
       <section className="py-16 px-6 max-w-7xl mx-auto text-center">
-        <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-7">Aliados</div>
-        <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
-          {partners.map((p) => (
-            <span key={p} className="font-display text-lg text-muted-foreground/70">{p}</span>
+        <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-8">Proyectos entregados</div>
+        <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+          {soldProjects.map((p) => (
+            <img key={p.slug} src={p.logo} alt={`Logo ${p.name}`} loading="lazy" className="h-8 w-auto object-contain opacity-50 grayscale" />
           ))}
         </div>
       </section>
+
 
       <CtaBand source="nosotros" />
     </>
