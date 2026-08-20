@@ -72,22 +72,25 @@ const Home = () => {
       </section>
 
       {/* Marcas Core */}
-      <section className="py-14 px-6 max-w-7xl mx-auto">
-        <div className="text-center text-xs uppercase tracking-[0.25em] text-muted-foreground mb-8">
-          Las marcas de Core
-        </div>
-        <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
-          {[...opportunities, ...soldProjects].map((p) => (
-            <img
-              key={p.slug}
-              src={p.logo}
-              alt={`Logo ${p.name}`}
-              loading="lazy"
-              className="h-7 md:h-8 w-auto object-contain opacity-45 hover:opacity-90 transition-opacity grayscale"
-            />
-          ))}
+      <section className="py-14 px-6 bg-primary mt-14">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center text-xs uppercase tracking-[0.25em] text-accent mb-8">
+            Las marcas de Core
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+            {[...opportunities, ...soldProjects].map((p) => (
+              <img
+                key={p.slug}
+                src={p.logo}
+                alt={`Logo ${p.name}`}
+                loading="lazy"
+                className="h-7 md:h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+            ))}
+          </div>
         </div>
       </section>
+
 
       {/* Proyectos */}
       <section className="py-20 px-6 max-w-7xl mx-auto">
