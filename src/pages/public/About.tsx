@@ -81,7 +81,7 @@ const About = () => {
         <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-8">Proyectos entregados</div>
         <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
           {soldProjects.map((p) => (
-            <img key={p.slug} src={p.logo} alt={`Logo ${p.name}`} loading="lazy" className="h-8 w-auto object-contain opacity-50 grayscale" />
+            <img key={p.slug} src={p.logo} alt={`Logo ${p.name}`} loading="lazy" className="h-8 w-auto object-contain brightness-0 opacity-40" />
           ))}
         </div>
       </section>

@@ -84,7 +84,7 @@ const Opportunities = () => {
                     <span className="bg-accent-soft text-accent-foreground text-xs px-3 py-1 rounded-full">{o.stage}</span>
                     <span className="text-xs text-muted-foreground">{o.type}</span>
                   </div>
-                  <img src={o.logo} alt={`Logo ${o.name}`} loading="lazy" className="h-8 w-auto object-contain mb-3" />
+                  <img src={o.logo} alt={`Logo ${o.name}`} loading="lazy" className="h-8 w-auto object-contain mb-3 brightness-0 opacity-85" />
                   <h2 className="font-display text-3xl mb-1">{o.name}</h2>
                   <div className="text-sm text-muted-foreground mb-1">{o.location}</div>
                   <div className="text-xs uppercase tracking-[0.2em] text-accent mb-4">{o.tagline}</div>
