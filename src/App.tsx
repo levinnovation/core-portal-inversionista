@@ -33,7 +33,14 @@ const App = () => (
         <AuthProvider>
           <ImpersonationProvider>
             <Routes>
-              <Route path="/" element={<Landing />} />
+              <Route element={<PublicLayout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/oportunidades" element={<Opportunities />} />
+                <Route path="/como-invertir" element={<HowToInvest />} />
+                <Route path="/nosotros" element={<About />} />
+                <Route path="/faq" element={<Faq />} />
+                <Route path="/contacto" element={<Contact />} />
+              </Route>
               <Route path="/auth" element={<Auth />} />
               <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
