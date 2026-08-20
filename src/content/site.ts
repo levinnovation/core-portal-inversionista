@@ -1,12 +1,34 @@
-import torre from "@/assets/project-torre.jpg";
-import residencial from "@/assets/project-residencial.jpg";
-import comercial from "@/assets/project-comercial.jpg";
+import siix from "@/assets/projects/siix.jpg";
+import urbnNunciatura from "@/assets/projects/urbn-nunciatura.jpg";
+import secrtEscalante from "@/assets/projects/secrt-escalante.jpg";
+import babylon from "@/assets/projects/babylon.jpg";
+import slva from "@/assets/projects/slva.jpg";
+import urbnEscalante from "@/assets/projects/urbn-escalante.jpg";
+import cosmopolitan from "@/assets/projects/cosmopolitan.jpg";
+import secrtSabana from "@/assets/projects/secrt-sabana.jpg";
+import metro from "@/assets/projects/metro.jpg";
+
+import siixLogo from "@/assets/projects/logos/siix.png";
+import urbnNunciaturaLogo from "@/assets/projects/logos/urbn-nunciatura.png";
+import secrtEscalanteLogo from "@/assets/projects/logos/secrt-escalante.png";
+import babylonLogo from "@/assets/projects/logos/babylon.png";
+import slvaLogo from "@/assets/projects/logos/slva.png";
+import urbnEscalanteLogo from "@/assets/projects/logos/urbn-escalante.png";
+import cosmopolitanLogo from "@/assets/projects/logos/cosmopolitan.png";
+import secrtSabanaLogo from "@/assets/projects/logos/secrt-sabana.png";
+import metroLogo from "@/assets/projects/logos/metro.png";
+
+/**
+ * Contenido público del sitio.
+ * Regla: solo información publicada por Core (core.cr / coredesarrolladora.com).
+ * No se incluyen retornos, TIR, tickets mínimos ni cifras de portafolio que Core no publique.
+ */
 
 export const stats = [
-  { value: "$1.2B", label: "Capital gestionado" },
-  { value: "24", label: "Proyectos desarrollados" },
-  { value: "3,400+", label: "Unidades entregadas" },
-  { value: "580", label: "Inversionistas activos" },
+  { value: "9", label: "Proyectos de marca Core" },
+  { value: "4", label: "Proyectos vendidos" },
+  { value: "5", label: "Zonas urbanas de San José" },
+  { value: "100%", label: "Hábitat urbano" },
 ];
 
 export type Opportunity = {
@@ -17,182 +39,292 @@ export type Opportunity = {
   stage: string;
   type: string;
   image: string;
-  minTicket: string;
-  targetReturn: string;
-  term: string;
-  progress: number;
+  logo: string;
+  tagline: string;
   summary: string;
   highlights: string[];
+  model: string;
+  units?: string;
+  site?: string;
+  sold?: boolean;
+  /** Datos publicados por Core para este proyecto en particular. */
+  publishedFigures?: { value: string; label: string }[];
+  figuresNote?: string;
 };
 
 export const opportunities: Opportunity[] = [
   {
-    slug: "torre-central",
-    name: "Torre Central",
-    location: "Escazú, San José",
+    slug: "babylon",
+    name: "Babylon",
+    location: "Nunciatura, San José",
     city: "San José",
-    stage: "En construcción",
-    type: "Residencial vertical",
-    image: torre,
-    minTicket: "$50,000",
-    targetReturn: "18% TIR objetivo",
-    term: "36 meses",
-    progress: 62,
+    stage: "En comercialización",
+    type: "Apart-hotel",
+    image: babylon,
+    logo: babylonLogo,
+    tagline: "El único apart-hotel de Nunciatura",
     summary:
-      "Torre residencial de 28 niveles con amenidades de servicio completo en el corredor financiero de Escazú. Preventa colocada al 71%.",
+      "Proyecto con visión hotelera, diseñado y conceptualizado para inversionistas del mundo hospitality. Ubicado en Nunciatura, a 12 km del aeropuerto y en uno de los sectores de mejor plusvalía del Área Metropolitana.",
+    model: "Renta corta administrada por Core",
+    units: "Unidades de 41.70 m² a 67.70 m²",
+    site: "https://www.coredesarrolladora.com/babylon/",
     highlights: [
-      "180 unidades de 1 a 3 dormitorios",
-      "Preventa 71% colocada",
-      "Entrega estimada Q4 2027",
-      "Financiamiento bancario aprobado",
+      "Tipologías A, C, D y E — varias ya vendidas",
+      "A 12 km del Aeropuerto Juan Santamaría",
+      "Operación y administración a cargo de Core",
+      "Amenidades pensadas para estadías cortas",
+    ],
+    publishedFigures: [
+      { value: "2.6 M", label: "Turistas ingresados al país por vía aérea en 2024" },
+      { value: "$62 – $95", label: "Tarifas diarias promedio de referencia" },
+      { value: "95%", label: "Tasa de ocupación de referencia" },
+    ],
+    figuresNote:
+      "Cifras de mercado publicadas por Core en el sitio del proyecto Babylon. Son referencias de mercado, no una proyección de rendimiento ni una garantía.",
+  },
+  {
+    slug: "siix-nunciatura",
+    name: "SIIX Nunciatura",
+    location: "Nunciatura, San José",
+    city: "San José",
+    stage: "En comercialización",
+    type: "Residencial urbano",
+    image: siix,
+    logo: siixLogo,
+    tagline: "Realmente espectacular",
+    summary:
+      "Torre residencial en el corazón de Nunciatura, dentro del clúster urbano donde Core concentra su hábitat: cercanía a oficinas, comercio y vida de barrio.",
+    model: "Residencial para habitar o rentar",
+    site: "https://www.coredesarrolladora.com/",
+    highlights: [
+      "Zona consolidada de Nunciatura, San José",
+      "Diseño y operación bajo estándar Core",
+      "Comunidad y amenidades de hábitat urbano",
+      "Disponibilidad y tipologías con el equipo comercial",
     ],
   },
   {
-    slug: "altavista-residences",
-    name: "Altavista Residences",
-    location: "Santa Ana, San José",
+    slug: "urbn-nunciatura",
+    name: "URBN Nunciatura",
+    location: "Nunciatura, San José",
     city: "San José",
-    stage: "Preconstrucción",
-    type: "Condominio boutique",
-    image: residencial,
-    minTicket: "$35,000",
-    targetReturn: "15% TIR objetivo",
-    term: "30 meses",
-    progress: 18,
+    stage: "En comercialización",
+    type: "Residencial urbano",
+    image: urbnNunciatura,
+    logo: urbnNunciaturaLogo,
+    tagline: "Redefiní Nunciatura",
     summary:
-      "Condominio boutique de baja densidad con 48 residencias, piscina y club house, en una de las zonas de mayor plusvalía del Valle Central.",
+      "Inspirado en el desarrollo de las grandes ciudades cosmopolitas, URBN Nunciatura glorifica el estilo de vida urbano: caminar, encontrarse y vivir la ciudad.",
+    model: "Residencial para habitar o rentar",
+    site: "https://www.urbnnunciaturacr.com/",
     highlights: [
-      "48 residencias de baja densidad",
-      "Terreno adquirido y permisos en trámite",
-      "Ticket de entrada accesible",
-      "Salida por venta de unidades",
+      "Concepto cosmopolita de la línea URBN",
+      "Segunda generación después de URBN Escalante",
+      "Ubicación caminable en Nunciatura",
+      "Disponibilidad y tipologías con el equipo comercial",
     ],
   },
   {
-    slug: "distrito-comercial",
-    name: "Distrito Comercial Norte",
-    location: "Heredia",
-    city: "Heredia",
-    stage: "Estabilizado",
-    type: "Comercial y oficinas",
-    image: comercial,
-    minTicket: "$100,000",
-    targetReturn: "9% flujo anual",
-    term: "Renta indefinida",
-    progress: 100,
+    slug: "secrt-escalante",
+    name: "SECRT Escalante",
+    location: "Barrio Escalante, San José",
+    city: "San José",
+    stage: "En comercialización",
+    type: "Boutique",
+    image: secrtEscalante,
+    logo: secrtEscalanteLogo,
+    tagline: "Tu historia, nuestra magia",
     summary:
-      "Complejo de uso mixto con locales comerciales y oficinas corporativas arrendados a inquilinos ancla, con flujo de caja distribuido trimestralmente.",
+      "Proyecto boutique en Barrio Escalante, el distrito gastronómico y cultural de San José. Diseñado, operado y pensado para quienes aman el mundo del hospitality.",
+    model: "Hospitality y residencia boutique",
+    site: "https://www.coredesarrolladora.com/secrtescalante/",
     highlights: [
-      "Ocupación 94%",
-      "Contratos de arrendamiento a 5 y 10 años",
-      "Distribuciones trimestrales",
-      "NOI estabilizado desde 2024",
+      "Barrio Escalante: gastronomía, café y cultura",
+      "Escala boutique, pocas unidades",
+      "Segunda generación de la línea SECRT",
+      "Disponibilidad y tipologías con el equipo comercial",
     ],
+  },
+  {
+    slug: "slva-guachipelin",
+    name: "SLVA Guachipelín",
+    location: "Guachipelín, Escazú",
+    city: "Escazú",
+    stage: "Últimas unidades",
+    type: "Hospitality",
+    image: slva,
+    logo: slvaLogo,
+    tagline: "Sé dueño de la última SLVA de Guachipelín",
+    summary:
+      "Diseñado, operado y pensado 100% para inversionistas que aman el mundo del hospitality. Es la última SLVA disponible en Guachipelín.",
+    model: "Renta administrada por Core",
+    site: "https://www.coredesarrolladora.com/slva/",
+    highlights: [
+      "Últimas unidades disponibles",
+      "Guachipelín, Escazú: corredor corporativo",
+      "Operación hotelera bajo estándar Core",
+      "Disponibilidad con el equipo comercial",
+    ],
+  },
+];
+
+export const soldProjects: Opportunity[] = [
+  {
+    slug: "urbn-escalante",
+    name: "URBN Escalante",
+    location: "Barrio Escalante, San José",
+    city: "San José",
+    stage: "Vendido",
+    type: "Residencial urbano",
+    image: urbnEscalante,
+    logo: urbnEscalanteLogo,
+    tagline: "El origen de la línea URBN",
+    summary: "Primer URBN de Core, en el distrito gastronómico de San José. Proyecto vendido en su totalidad.",
+    model: "Residencial urbano",
+    sold: true,
+    highlights: [],
+  },
+  {
+    slug: "cosmopolitan-tower",
+    name: "Cosmopolitan Tower",
+    location: "San José",
+    city: "San José",
+    stage: "Vendido",
+    type: "Torre residencial",
+    image: cosmopolitan,
+    logo: cosmopolitanLogo,
+    tagline: "Vida en altura",
+    summary: "Torre de la primera etapa de Core, colocada por completo entre inversionistas y residentes.",
+    model: "Torre residencial",
+    sold: true,
+    highlights: [],
+  },
+  {
+    slug: "secrt-sabana",
+    name: "SECRT Sabana",
+    location: "Sabana, San José",
+    city: "San José",
+    stage: "Vendido",
+    type: "Boutique",
+    image: secrtSabana,
+    logo: secrtSabanaLogo,
+    tagline: "El primer SECRT",
+    summary: "Proyecto boutique frente al pulmón verde de San José. Vendido en su totalidad.",
+    model: "Hospitality boutique",
+    sold: true,
+    highlights: [],
+  },
+  {
+    slug: "metro",
+    name: "Metro",
+    location: "San José",
+    city: "San José",
+    stage: "Vendido",
+    type: "Residencial urbano",
+    image: metro,
+    logo: metroLogo,
+    tagline: "Hábitat urbano de escala media",
+    summary: "Desarrollo urbano de Core entregado y colocado en su totalidad.",
+    model: "Residencial urbano",
+    sold: true,
+    highlights: [],
   },
 ];
 
 export const platformFeatures = [
   {
-    title: "Tu portafolio, siempre actualizado",
+    title: "Tu portafolio Core, siempre actualizado",
     body:
-      "Capital invertido, valor actual, distribuciones recibidas y participación por proyecto en una sola vista. Sin esperar el correo del trimestre.",
-    points: ["Posición consolidada", "Distribuciones históricas", "Documentos legales por inversión"],
+      "Capital colocado, participación por proyecto, distribuciones recibidas y documentos de cada inversión en una sola vista. Sin esperar el correo del trimestre.",
+    points: ["Posición consolidada", "Historial de distribuciones", "Expediente legal por inversión"],
   },
   {
-    title: "Métricas que sí puedes auditar",
+    title: "Métricas que sí podés auditar",
     body:
-      "TIR (XIRR), Cash-on-Cash, Equity Multiple y NOI calculados sobre tus flujos reales, con el detalle de fechas y montos usados y la metodología a la vista.",
+      "TIR (XIRR), Cash-on-Cash, Equity Multiple y NOI calculados sobre tus flujos reales, con las fechas y montos usados a la vista y la metodología publicada dentro del portal.",
     points: ["Exportación a PDF y CSV", "Panel de metodología", "Flujos de caja detallados"],
   },
   {
     title: "La obra, fotografiada",
     body:
-      "Avance por fase con porcentajes, fechas estimadas contra reales y galería fotográfica actualizada por el equipo de campo.",
+      "Avance por fase con porcentajes, fechas estimadas contra reales y galería fotográfica actualizada por el equipo de proyecto de Core.",
     points: ["Avance por fase", "Galería de obra", "Alertas de hitos"],
   },
 ];
 
+export const aiExamples = [
+  {
+    q: "¿Cuánto he recibido en distribuciones este año?",
+    a: "Consulta tus distribuciones fechadas por proyecto y te devuelve el total del período con el detalle que lo compone.",
+  },
+  {
+    q: "¿En qué fase va la obra de mi proyecto?",
+    a: "Resume el avance por fase, las fechas reales contra las estimadas y las fotos más recientes del equipo de campo.",
+  },
+  {
+    q: "¿Qué dice mi contrato sobre el retorno preferente?",
+    a: "Busca dentro de tus propios documentos y cita el fragmento exacto del expediente donde aparece la cláusula.",
+  },
+  {
+    q: "¿Cuál es mi próximo pago y por cuánto?",
+    a: "Revisa tu plan de pagos, identifica la próxima cuota y te indica monto, fecha y estado.",
+  },
+];
+
 export const differentiators = [
-  { title: "Transparencia total", body: "Cada cifra del portal proviene del sistema operativo de Core, no de una presentación." },
-  { title: "Reportes trimestrales", body: "Estados de resultados, avance y proyecciones entregados en el portal y por correo." },
+  { title: "Hábitat urbano", body: "Core no vende metros cuadrados: construye comunidad en zonas caminables de San José." },
+  { title: "Operación propia", body: "Los proyectos hospitality son diseñados, operados y administrados por el mismo equipo que los desarrolla." },
+  { title: "Track record entregado", body: "URBN Escalante, Cosmopolitan Tower, SECRT Sabana y Metro: proyectos colocados en su totalidad." },
   { title: "Obra documentada", body: "Fotografía y bitácora de cada fase constructiva, actualizada por el equipo de proyecto." },
   { title: "Expediente legal", body: "Contratos, escrituras y adendas disponibles para descarga desde tu portafolio." },
-  { title: "Asistente con IA", body: "Pregunta en lenguaje natural por tu posición, pagos o documentos y obtén respuestas con fuente." },
-  { title: "Equipo dedicado", body: "Un ejecutivo de relación asignado a cada inversionista, con contacto directo." },
+  { title: "Asistente con IA", body: "Preguntá en lenguaje natural por tu posición, tus pagos o tus documentos y obtené la respuesta con su fuente." },
 ];
 
 export const howItWorks = [
-  { step: "01", title: "Solicita acceso", body: "Cuéntanos tu perfil y el monto que te interesa colocar. Respondemos en menos de 48 horas." },
-  { step: "02", title: "Verificación", body: "Completamos KYC y acreditación con el acompañamiento de nuestro equipo de cumplimiento." },
-  { step: "03", title: "Elige tu proyecto", body: "Revisa el expediente completo de cada oportunidad: financieros, permisos y proyecciones." },
-  { step: "04", title: "Sigue tu inversión", body: "Desde el portal: distribuciones, métricas, avance de obra y documentos, en tiempo real." },
-];
-
-export const successCases = [
-  { name: "Vista Real", location: "Curridabat", result: "22.4% TIR realizada", detail: "96 unidades entregadas y vendidas en 34 meses." },
-  { name: "Plaza Lindora", location: "Santa Ana", result: "2.1x Equity Multiple", detail: "Salida por venta institucional del activo en 2024." },
-  { name: "Bosque Alto", location: "Alajuela", result: "11% flujo anual", detail: "Activo de renta estabilizado con ocupación del 97%." },
-];
-
-export const testimonials = [
-  {
-    quote:
-      "Es la primera vez que veo mi inversión inmobiliaria con el mismo nivel de detalle que mi portafolio bursátil. La trazabilidad de los flujos cambia la conversación.",
-    name: "Andrés Marín",
-    role: "Family office · San José",
-  },
-  {
-    quote:
-      "El avance de obra con fotos y fechas reales nos ahorra las llamadas de seguimiento. Sabemos exactamente en qué fase está cada proyecto.",
-    name: "Carolina Vega",
-    role: "Inversionista desde 2019",
-  },
-  {
-    quote:
-      "Los reportes trimestrales y el expediente legal descargable nos permitieron pasar el comité de inversión sin fricción.",
-    name: "Roberto Solís",
-    role: "Director de inversiones",
-  },
+  { step: "01", title: "Solicitá acceso", body: "Contanos tu perfil y qué proyecto Core te interesa. Un ejecutivo te contacta para conversar." },
+  { step: "02", title: "Verificación", body: "Completamos la verificación de identidad y cumplimiento con el acompañamiento del equipo Core." },
+  { step: "03", title: "Elegí tu unidad o participación", body: "Revisá el expediente del proyecto: planos, tipologías, modelo de operación y condiciones." },
+  { step: "04", title: "Seguí tu inversión", body: "Desde PortalCore: pagos, distribuciones, métricas, avance de obra y documentos, en tiempo real." },
 ];
 
 export const faqs = [
   {
     category: "Acceso",
     items: [
-      { q: "¿Quién puede invertir con Core?", a: "Inversionistas calificados que completen nuestro proceso de verificación KYC y acreditación. El equipo revisa cada solicitud de acceso de forma individual." },
-      { q: "¿Cuánto tarda la aprobación?", a: "Respondemos toda solicitud en menos de 48 horas hábiles. La verificación completa suele tomar entre 3 y 5 días." },
+      { q: "¿Quién puede invertir con Core?", a: "Cualquier persona interesada en los proyectos Core que complete el proceso de verificación de identidad y cumplimiento. El equipo revisa cada solicitud de acceso de forma individual." },
+      { q: "¿Cuánto tarda la aprobación?", a: "Un ejecutivo de Core te contacta tras recibir tu solicitud para conversar sobre el proyecto que te interesa y explicarte los pasos siguientes." },
+      { q: "¿PortalCore es lo mismo que core.cr?", a: "No. core.cr es el sitio de marca de Core. PortalCore es la plataforma privada donde cada inversionista y cada comprador da seguimiento a su inversión, sus pagos y su obra." },
     ],
   },
   {
-    category: "Inversión",
+    category: "Proyectos",
     items: [
-      { q: "¿Cuál es el monto mínimo?", a: "Depende del proyecto: los tickets de entrada van desde $35,000 en proyectos de preconstrucción hasta $100,000 en activos de renta estabilizada." },
-      { q: "¿Cómo se estructura cada inversión?", a: "Según el proyecto: equity, deuda o participación preferente. El expediente de cada oportunidad detalla la estructura, la prelación y la cascada de distribuciones." },
-      { q: "¿Cada cuánto recibo distribuciones?", a: "Los activos de renta distribuyen trimestralmente. Los proyectos de desarrollo distribuyen conforme a los hitos definidos en el contrato de inversión." },
+      { q: "¿Qué proyectos están disponibles hoy?", a: "Babylon, SIIX Nunciatura, URBN Nunciatura, SECRT Escalante y las últimas unidades de SLVA Guachipelín. La disponibilidad por tipología la confirma el equipo comercial." },
+      { q: "¿Cuál es la diferencia entre los proyectos residenciales y los hospitality?", a: "Los proyectos hospitality como Babylon y SLVA están concebidos para renta corta administrada por Core. Los residenciales como SIIX y URBN están pensados para habitar o rentar de forma tradicional." },
+      { q: "¿Publican retornos objetivo?", a: "En este sitio solo mostramos información publicada por Core. Las condiciones económicas de cada proyecto se conversan directamente con el equipo comercial y quedan en el expediente de tu inversión dentro del portal." },
     ],
   },
   {
     category: "Plataforma",
     items: [
-      { q: "¿Cómo se calculan las métricas?", a: "La TIR se calcula con XIRR sobre los flujos reales fechados; Cash-on-Cash, Equity Multiple y NOI siguen las fórmulas publicadas en el panel de metodología dentro del portal." },
-      { q: "¿Puedo exportar mi información?", a: "Sí. Desde tu portafolio puedes descargar un PDF o CSV con las métricas y el detalle de flujos usados en el cálculo." },
+      { q: "¿Cómo se calculan las métricas?", a: "La TIR se calcula con XIRR sobre tus flujos reales fechados; Cash-on-Cash, Equity Multiple y NOI siguen las fórmulas publicadas en el panel de metodología dentro del portal." },
+      { q: "¿Puedo exportar mi información?", a: "Sí. Desde tu portafolio podés descargar un PDF o CSV con las métricas y el detalle de flujos usados en el cálculo." },
+      { q: "¿Qué hace el asistente de IA?", a: "Responde preguntas sobre tu propia información: posición, distribuciones, pagos, avance de obra y contenido de tus documentos, citando la fuente de cada dato." },
       { q: "¿Mis datos están protegidos?", a: "Cada usuario solo puede ver la información asociada a su perfil, con control de acceso aplicado a nivel de base de datos y registro de auditoría de las operaciones sensibles." },
     ],
   },
 ];
 
 export const team = [
-  { name: "Moshe Rosenstock", role: "Socio director" },
-  { name: "Laura Jiménez", role: "Directora de inversiones" },
-  { name: "Diego Alfaro", role: "Director de desarrollo" },
-  { name: "Paula Cordero", role: "Relación con inversionistas" },
+  { name: "Equipo de desarrollo", role: "Diseño y construcción de cada proyecto Core" },
+  { name: "Equipo de operación", role: "Administración hotelera y de renta" },
+  { name: "Equipo comercial", role: "Acompañamiento a inversionistas y compradores" },
+  { name: "Comunidad Core", role: "Experiencias, cultura y estilo de vida" },
 ];
 
-export const partners = ["Banco Nacional", "Grupo Constructor JV", "Prisma Legal", "Deloitte CR", "Colliers", "BAC Credomatic"];
-
 export const contactInfo = {
-  address: "Plaza Tempo, Escazú, San José, Costa Rica",
+  address: "San José, Costa Rica",
   email: "inversiones@portalcore.app",
-  phone: "+506 4000 0000",
+  site: "core.cr",
   hours: "Lunes a viernes, 8:00 a 17:00 (GMT-6)",
 };
