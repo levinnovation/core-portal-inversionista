@@ -64,7 +64,7 @@ const ProjectDetail = () => {
       </div>
 
       <Tabs defaultValue="phases">
-        <TabsList>
+        <TabsList className="w-full justify-start overflow-x-auto">
           <TabsTrigger value="phases">Fases de obra ({phases.length})</TabsTrigger>
           <TabsTrigger value="units">Unidades ({units.length})</TabsTrigger>
           <TabsTrigger value="docs">Documentos ({docs.length})</TabsTrigger>
