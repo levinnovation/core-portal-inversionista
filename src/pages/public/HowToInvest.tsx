@@ -70,17 +70,19 @@ const HowToInvest = () => {
       </section>
 
       <section className="py-20 px-6 max-w-7xl mx-auto">
-        <SectionHeading eyebrow="Tickets" title="Montos mínimos por tipo de proyecto" />
+        <SectionHeading eyebrow="Proyectos" title="Modelos de inversión disponibles" />
         <div className="grid md:grid-cols-3 gap-6">
-          {opportunities.map((o) => (
+          {opportunities.slice(0, 3).map((o) => (
             <div key={o.slug} className="bg-card border border-border rounded-lg p-7 shadow-card text-center">
+              <img src={o.logo} alt={`Logo ${o.name}`} loading="lazy" className="h-8 w-auto object-contain mx-auto mb-4" />
               <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">{o.type}</div>
-              <div className="font-display text-4xl text-primary mb-2 truncate">{o.minTicket}</div>
-              <div className="text-sm text-muted-foreground">{o.name} · {o.term}</div>
+              <div className="font-display text-2xl text-primary mb-2">{o.model}</div>
+              <div className="text-sm text-muted-foreground">{o.name} · {o.location}</div>
             </div>
           ))}
         </div>
       </section>
+
 
       <section className="py-20 px-6 bg-subtle">
         <div className="max-w-3xl mx-auto">

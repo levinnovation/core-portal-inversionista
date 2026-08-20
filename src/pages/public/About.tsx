@@ -1,6 +1,6 @@
 import { useSeo } from "@/components/public/PublicLayout";
 import { SectionHeading, StatsBar, CtaBand } from "@/components/public/Sections";
-import { stats, team, partners, differentiators } from "@/content/site";
+import { stats, team, differentiators, soldProjects } from "@/content/site";
 
 const About = () => {
   useSeo(
