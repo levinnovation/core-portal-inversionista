@@ -104,9 +104,7 @@ const Home = () => {
                     ))}
                   </ul>
                 </div>
-                <div className="bg-card border border-border rounded-lg shadow-card p-8 h-56 flex items-center justify-center">
-                  <span className="font-display text-5xl text-accent/25">0{i + 1}</span>
-                </div>
+                <PortalMock variant={i as 0 | 1 | 2} />
               </div>
             ))}
           </div>
