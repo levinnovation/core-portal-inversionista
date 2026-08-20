@@ -14,11 +14,11 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-6 py-20">
           <div className="text-accent text-xs tracking-[0.3em] uppercase mb-4">Nosotros</div>
           <h1 className="font-display text-4xl md:text-5xl max-w-2xl leading-tight">
-            Construimos, administramos y rendimos cuentas
+            Creadores de hábitat urbano
           </h1>
           <p className="text-primary-foreground/75 max-w-2xl mt-5 leading-relaxed">
-            Core nació en 2012 como desarrolladora inmobiliaria y hoy administra un portafolio
-            diversificado de proyectos residenciales, comerciales y de renta en Costa Rica.
+            Core desarrolla, opera y administra proyectos residenciales y de hospitality en las zonas
+            más urbanas de San José. No vendemos metros cuadrados: construimos comunidad.
           </p>
         </div>
       </section>
@@ -29,22 +29,24 @@ const About = () => {
 
       <section className="py-16 px-6 bg-subtle">
         <div className="max-w-3xl mx-auto space-y-5 text-muted-foreground leading-relaxed">
-          <h2 className="font-display text-3xl text-foreground">Nuestra historia</h2>
+          <h2 className="font-display text-3xl text-foreground">Cómo pensamos los proyectos</h2>
           <p>
-            Empezamos desarrollando condominios de baja densidad en el Valle Central. Con cada proyecto
-            entregado, un patrón se repetía: los inversionistas no tenían forma de saber en qué estado
-            estaba realmente su capital hasta el reporte anual.
+            Cada marca de Core responde a una forma de habitar la ciudad: URBN glorifica el estilo de
+            vida cosmopolita y caminable; SECRT lleva la escala boutique a Escalante y Sabana; SLVA y
+            Babylon están concebidos desde el mundo hospitality, con operación a cargo del mismo
+            equipo que los desarrolla.
           </p>
           <p>
-            En 2021 decidimos resolverlo desde adentro: conectamos nuestro sistema operativo de obra,
-            ventas y tesorería a un portal donde cada inversionista y cada comprador ve exactamente lo
-            mismo que ve nuestro comité de inversión.
+            Esa integración —desarrollo, construcción y operación bajo el mismo techo— es la razón por
+            la que podemos mostrarle a cada inversionista el estado real de su proyecto sin esperar el
+            reporte del trimestre.
           </p>
           <p>
-            Hoy operamos con esa regla: si una cifra no se puede auditar en el portal, no se publica.
+            PortalCore es la consecuencia: si una cifra no se puede auditar en el portal, no se publica.
           </p>
         </div>
       </section>
+
 
       <section className="py-20 px-6 max-w-7xl mx-auto">
         <SectionHeading eyebrow="Principios" title="Cómo trabajamos" />
