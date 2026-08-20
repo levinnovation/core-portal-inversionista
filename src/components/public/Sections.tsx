@@ -124,7 +124,7 @@ export const CtaBand = ({
             Solicitar acceso <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
           <Link to="/auth">
-            <Button size="lg" variant="outline" className="w-full sm:w-auto border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10">
+            <Button size="lg" variant="outline" className="w-full sm:w-auto bg-transparent border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
               Ya soy inversionista
             </Button>
           </Link>
