@@ -113,7 +113,8 @@ const ProjectDetail = () => {
             {units.length === 0 ? (
               <div className="text-muted-foreground text-sm py-8 text-center">No hay unidades registradas</div>
             ) : (
-              <table className="w-full text-sm">
+              <div className="overflow-x-auto -mx-6 px-6">
+              <table className="w-full text-sm min-w-[560px]">
                 <thead className="text-left text-xs uppercase text-muted-foreground border-b border-border">
                   <tr><th className="py-2">Unidad</th><th>Piso</th><th>m²</th><th>Hab</th><th>Precio</th><th>Estado</th></tr>
                 </thead>
@@ -130,6 +131,7 @@ const ProjectDetail = () => {
                   ))}
                 </tbody>
               </table>
+              </div>
             )}
           </div>
         </TabsContent>

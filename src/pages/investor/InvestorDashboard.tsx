@@ -149,7 +149,7 @@ const InvestorDashboard = () => {
       <div className="bg-card border border-border rounded-lg p-6 shadow-card">
         <h3 className="font-display text-xl mb-4">Tus inversiones</h3>
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full text-sm min-w-[640px]">
             <thead>
               <tr className="text-left text-muted-foreground border-b border-border">
                 <th className="py-3 font-medium">Proyecto</th>

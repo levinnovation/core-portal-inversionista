@@ -42,7 +42,7 @@ const AuditLogs = () => {
           <div className="p-10 text-center text-muted-foreground">Sin eventos registrados.</div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+            <table className="w-full text-sm min-w-[720px]">
               <thead>
                 <tr className="text-left text-muted-foreground border-b border-border bg-subtle">
                   <th className="px-4 py-3 font-medium">Fecha</th>

@@ -40,7 +40,8 @@ const CustomersList = () => {
         </div>
       ) : (
         <div className="bg-card border border-border rounded-lg shadow-card overflow-hidden">
-          <table className="w-full text-sm">
+          <div className="overflow-x-auto">
+          <table className="w-full text-sm min-w-[640px]">
             <thead className="text-left text-xs uppercase text-muted-foreground border-b border-border bg-muted/40">
               <tr>
                 <th className="px-5 py-3">Nombre</th>
@@ -72,6 +73,7 @@ const CustomersList = () => {
               })}
             </tbody>
           </table>
+          </div>
         </div>
       )}
 
