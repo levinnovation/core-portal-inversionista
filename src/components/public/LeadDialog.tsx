@@ -47,7 +47,7 @@ export const LeadForm = ({
     e.preventDefault();
     const parsed = leadSchema.safeParse(form);
     if (!parsed.success) {
-      toast.error(parsed.error.errors[0].message);
+      toast.error(parsed.error.issues[0].message);
       return;
     }
     setBusy(true);
