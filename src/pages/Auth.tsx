@@ -98,7 +98,17 @@ const Auth = () => {
                   <Input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div>
-                  <Label>Contraseña</Label>
+                  <div className="flex items-center justify-between">
+                    <Label>Contraseña</Label>
+                    <button
+                      type="button"
+                      onClick={handleReset}
+                      disabled={busy}
+                      className="text-xs text-muted-foreground hover:text-primary underline underline-offset-2"
+                    >
+                      ¿Olvidaste tu contraseña?
+                    </button>
+                  </div>
                   <Input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <Button type="submit" disabled={busy} className="w-full bg-primary text-primary-foreground hover:bg-primary-glow">
