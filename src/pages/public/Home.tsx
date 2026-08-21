@@ -53,7 +53,7 @@ const Home = () => {
                 tus documentos, con un asistente de IA que responde sobre tu propia información.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button size="lg" onClick={() => open("hero")} className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-gold">
+                <Button size="lg" variant="premium" onClick={() => open("hero")}>
                   Solicitar acceso <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Link to="/oportunidades">

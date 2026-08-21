@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowRight, LogIn } from "lucide-react";
 import { useLeadDialog } from "./LeadDialog";
 
 const menus = [
@@ -78,12 +78,16 @@ export const PublicNav = () => {
 
         <div className="hidden lg:flex items-center gap-3">
           <Link to="/auth">
-            <Button variant="ghost" size="sm" className={onDark ? "text-primary-foreground hover:text-accent hover:bg-transparent" : ""}>
+            <Button
+              variant="ghost"
+              size="sm"
+              className={onDark ? "text-primary-foreground/90 hover:text-accent hover:bg-primary-foreground/10" : "text-foreground/80 hover:text-primary hover:bg-secondary"}
+            >
               Iniciar sesión
             </Button>
           </Link>
-          <Button size="sm" onClick={() => open("nav")} className="bg-accent text-accent-foreground hover:bg-accent/90">
-            Solicitar acceso
+          <Button size="sm" variant="premium" onClick={() => open("nav")}>
+            Solicitar acceso <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
           </Button>
         </div>
 
@@ -115,12 +119,14 @@ export const PublicNav = () => {
               </div>
             </div>
           ))}
-          <div className="flex flex-col gap-2 pt-2 border-t border-border">
-            <Button onClick={() => { setMobileOpen(false); open("nav-mobile"); }} className="bg-accent text-accent-foreground hover:bg-accent/90">
-              Solicitar acceso
+          <div className="flex flex-col gap-3 pt-3 border-t border-border">
+            <Button size="lg" variant="premium" onClick={() => { setMobileOpen(false); open("nav-mobile"); }}>
+              Solicitar acceso <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Link to="/auth" onClick={() => setMobileOpen(false)}>
-              <Button variant="outline" className="w-full">Iniciar sesión</Button>
+              <Button variant="outline" size="lg" className="w-full">
+                <LogIn className="mr-2 h-4 w-4" /> Iniciar sesión
+              </Button>
             </Link>
           </div>
         </div>
