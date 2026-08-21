@@ -3,7 +3,9 @@
 export interface CashFlow {
   date: Date;
   amount: number; // negative = invested (outflow), positive = distribution (inflow)
+  label?: string;
 }
+
 
 /**
  * Compute XIRR (annualized IRR for irregular cash flows) using Newton-Raphson,
@@ -104,21 +106,63 @@ export function estimateNOI(distributions: any[]): number {
     .reduce((s, d) => s + Number(d.amount || 0), 0);
 }
 
-/** Build cash flows array from investments + distributions (investor perspective) */
-export function buildCashFlows(investments: any[], distributions: any[]): CashFlow[] {
+/**
+ * Capital aún no devuelto: capital aportado menos las distribuciones
+ * clasificadas como retorno de capital. Se usa como valor residual
+ * (a costo, sin apreciación) para el cálculo de IRR de un portafolio vivo.
+ */
+export function unreturnedCapital(investments: any[], distributions: any[]): number {
+  const invested = investments
+    .filter((i) => String(i.status ?? "active").toLowerCase() !== "exited")
+    .reduce((s, i) => s + Math.abs(Number(i.amount_invested || 0)), 0);
+  const returned = distributions
+    .filter((d) => String(d.type || "").toLowerCase() === "return_of_capital")
+    .reduce((s, d) => s + Math.abs(Number(d.amount || 0)), 0);
+  return Math.max(invested - returned, 0);
+}
+
+/**
+ * Build cash flows array from investments + distributions (investor perspective).
+ * Por defecto agrega un flujo residual a la fecha de hoy con el capital aún no
+ * devuelto, para que la IRR de un portafolio en curso no se lea como pérdida total.
+ */
+export function buildCashFlows(
+  investments: any[],
+  distributions: any[],
+  opts?: { includeResidual?: boolean; asOf?: Date }
+): CashFlow[] {
   const flows: CashFlow[] = [];
   investments.forEach((inv) => {
     if (inv.investment_date && inv.amount_invested) {
-      flows.push({ date: new Date(inv.investment_date), amount: -Math.abs(Number(inv.amount_invested)) });
+      flows.push({
+        date: new Date(inv.investment_date),
+        amount: -Math.abs(Number(inv.amount_invested)),
+        label: "Aporte de capital",
+      });
     }
   });
   distributions.forEach((d) => {
     if (d.distribution_date && d.amount) {
-      flows.push({ date: new Date(d.distribution_date), amount: Math.abs(Number(d.amount)) });
+      flows.push({
+        date: new Date(d.distribution_date),
+        amount: Math.abs(Number(d.amount)),
+        label: "Distribución",
+      });
     }
   });
+  if (opts?.includeResidual !== false) {
+    const residual = unreturnedCapital(investments, distributions);
+    if (residual > 0 && flows.length > 0) {
+      flows.push({
+        date: opts?.asOf ?? new Date(),
+        amount: residual,
+        label: "Valor residual (capital no devuelto, a costo)",
+      });
+    }
+  }
   return flows;
 }
+
 
 export const fmtPct = (n: number, digits = 1) =>
   isFinite(n) ? `${(n * 100).toFixed(digits)}%` : "—";

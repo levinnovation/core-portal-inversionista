@@ -58,7 +58,7 @@ export function exportMetricsCSV(args: Args) {
   lines.push("Flujos de caja usados para IRR");
   lines.push("Fecha,Tipo,Monto (USD)");
   flows.forEach((f: CashFlow) => {
-    lines.push(`${fmtDate(f.date)},${f.amount < 0 ? "Inversión" : "Distribución"},${f.amount.toFixed(2)}`);
+    lines.push(`${fmtDate(f.date)},${f.label ?? (f.amount < 0 ? "Inversión" : "Distribución")},${f.amount.toFixed(2)}`);
   });
   const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8;" });
   triggerDownload(blob, `metricas-${fmtDate(new Date())}.csv`);
@@ -180,7 +180,7 @@ export function exportMetricsPDF(args: Args) {
     head: [["Fecha", "Tipo", "Monto (USD)"]],
     body: flows.map((f) => [
       fmtDate(f.date),
-      f.amount < 0 ? "Inversión (salida)" : "Distribución (entrada)",
+      f.label ?? (f.amount < 0 ? "Inversión (salida)" : "Distribución (entrada)"),
       fmtUSD(f.amount),
     ]),
     theme: "grid",
