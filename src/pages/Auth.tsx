@@ -70,7 +70,7 @@ const Auth = () => {
   return (
     <div className="min-h-screen flex bg-subtle">
       <div className="hidden lg:flex flex-1 bg-hero p-16 flex-col justify-between text-primary-foreground">
-        <Link to="/" className="font-display text-3xl text-accent tracking-tight">CORE</Link>
+        <Link to="/"><CoreLogo className="h-10" /></Link>
         <div>
           <div className="text-accent text-xs tracking-[0.3em] uppercase mb-4">Portal seguro</div>
           <h2 className="font-display text-4xl leading-tight max-w-md">
