@@ -3,6 +3,7 @@ import { PortalShell } from "@/components/PortalShell";
 import { LayoutDashboard, Building2, Wallet, FileText, MessageSquare } from "lucide-react";
 import InvestorDashboard from "./investor/InvestorDashboard";
 import InvestorProjects from "./investor/InvestorProjects";
+import InvestorProjectDetail from "./investor/InvestorProjectDetail";
 import InvestorDistributions from "./investor/InvestorDistributions";
 import InvestorDocuments from "./investor/InvestorDocuments";
 import InvestorAgent from "./investor/InvestorAgent";
