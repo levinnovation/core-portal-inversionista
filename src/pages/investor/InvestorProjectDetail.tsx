@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useImpersonation } from "@/hooks/useImpersonation";
@@ -364,22 +364,22 @@ const InvestorProjectDetail = () => {
                   const f = (v: any) =>
                     r.values.format === "pct" ? fmtPct(Number(v), 0) : r.values.format === "multiple" ? fmtMultiple(Number(v)) : usd(v);
                   return (
-                    <>
-                      <tr key={r.id} className="border-b border-border/50">
+                    <Fragment key={r.id}>
+                      <tr className="border-b border-border/50">
                         <td className="py-2">{r.label}</td>
                         <td className="py-2 text-right font-mono">{f(r.values.pessimistic)}</td>
                         <td className="py-2 text-right font-mono text-accent">{f(r.values.real)}</td>
                         <td className="py-2 text-right font-mono">{f(r.values.optimistic)}</td>
                       </tr>
                       {r.values.prorate && pr.share > 0 && (
-                        <tr key={r.id + "-mine"} className="border-b border-border/50 bg-secondary/30">
+                        <tr className="border-b border-border/50 bg-secondary/30">
                           <td className="py-2 pl-4 text-muted-foreground">Mi {String(r.label).toLowerCase()} ({fmtSharePct(pr.share)})</td>
                           <td className="py-2 text-right font-mono">{usd(Number(r.values.pessimistic) * pr.share)}</td>
                           <td className="py-2 text-right font-mono text-accent">{usd(Number(r.values.real) * pr.share)}</td>
                           <td className="py-2 text-right font-mono">{usd(Number(r.values.optimistic) * pr.share)}</td>
                         </tr>
                       )}
-                    </>
+                    </Fragment>
                   );
                 })}
               </Table>
