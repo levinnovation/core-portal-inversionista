@@ -118,11 +118,47 @@ export const CoreCopilot = () => {
     setInput("");
   };
 
+  const markdownComponents = {
+    p: (p: any) => <p className="my-1.5 leading-relaxed" {...p} />,
+    strong: (p: any) => <strong className="font-semibold text-foreground" {...p} />,
+    ul: (p: any) => <ul className="my-1.5 list-disc pl-4 space-y-1" {...p} />,
+    ol: (p: any) => <ol className="my-1.5 list-decimal pl-4 space-y-1" {...p} />,
+    li: (p: any) => <li className="leading-relaxed" {...p} />,
+    h1: (p: any) => <h1 className="font-display text-base mt-3 mb-1.5" {...p} />,
+    h2: (p: any) => <h2 className="font-display text-base mt-3 mb-1.5" {...p} />,
+    h3: (p: any) => <h3 className="font-display text-sm mt-3 mb-1.5" {...p} />,
+    a: (p: any) => <a className="text-accent underline underline-offset-2" target="_blank" rel="noreferrer" {...p} />,
+    hr: () => <hr className="my-3 border-border" />,
+    blockquote: (p: any) => (
+      <blockquote className="border-l-2 border-accent/50 pl-3 my-2 text-muted-foreground" {...p} />
+    ),
+    code: ({ inline, className, children, ...rest }: any) =>
+      inline ? (
+        <code className="rounded bg-subtle px-1 py-0.5 text-[12px] font-mono" {...rest}>{children}</code>
+      ) : (
+        <pre className="my-2 overflow-x-auto rounded-md bg-subtle border border-border p-2.5">
+          <code className="text-[12px] font-mono leading-relaxed" {...rest}>{children}</code>
+        </pre>
+      ),
+    table: (p: any) => (
+      <div className="my-2 -mx-1 overflow-x-auto">
+        <table className="w-full text-[12px] border-collapse" {...p} />
+      </div>
+    ),
+    thead: (p: any) => <thead className="bg-subtle" {...p} />,
+    th: (p: any) => (
+      <th className="border border-border px-2 py-1 text-left font-medium whitespace-nowrap" {...p} />
+    ),
+    td: (p: any) => <td className="border border-border px-2 py-1 align-top" {...p} />,
+  };
+
   const renderPart = (part: any, idx: number) => {
     if (part.type === "text") {
       return (
-        <div key={idx} className="prose prose-sm dark:prose-invert max-w-none prose-p:my-2 prose-headings:font-display prose-table:text-xs">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{part.text}</ReactMarkdown>
+        <div key={idx} className="text-sm break-words [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+          <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+            {part.text}
+          </ReactMarkdown>
         </div>
       );
     }
@@ -147,9 +183,9 @@ export const CoreCopilot = () => {
         <button
           onClick={() => setOpen(true)}
           aria-label="Abrir Core Copilot"
-          className="fixed bottom-5 left-5 z-50 h-14 w-14 rounded-full bg-accent text-accent-foreground shadow-lg flex items-center justify-center transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="fixed bottom-5 right-5 z-50 h-14 w-14 rounded-full bg-accent text-accent-foreground shadow-lg flex items-center justify-center transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
-          <MessageSquare className="h-6 w-6" />
+          <Sparkles className="h-6 w-6" />
         </button>
       )}
 
@@ -157,13 +193,14 @@ export const CoreCopilot = () => {
         <div
           className={cn(
             "fixed z-50 bg-card border border-border rounded-xl shadow-2xl flex flex-col overflow-hidden",
-            "inset-x-3 bottom-3 top-16 sm:inset-auto sm:bottom-5 sm:left-5 sm:top-auto sm:w-[400px] sm:h-[600px] sm:max-h-[calc(100vh-3rem)]",
+            "inset-x-3 bottom-3 top-16 sm:inset-auto sm:bottom-5 sm:right-5 sm:top-auto sm:w-[400px] sm:h-[600px] sm:max-h-[calc(100vh-3rem)]",
           )}
         >
           <div className="flex items-center gap-3 px-4 py-3 border-b border-border bg-subtle">
             <div className="h-9 w-9 rounded-full bg-accent/15 text-accent flex items-center justify-center shrink-0">
-              <MessageSquare className="h-4 w-4" />
+              <Sparkles className="h-4 w-4" />
             </div>
+
             <div className="min-w-0 flex-1">
               <div className="font-display text-base leading-tight truncate">{copy.title}</div>
               <div className="text-xs text-muted-foreground truncate">{copy.subtitle}</div>
