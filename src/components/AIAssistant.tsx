@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Send, Sparkles, Wrench } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface Props {
   title?: string;
@@ -51,7 +52,7 @@ export const AIAssistant = ({
     if (part.type === "text") {
       return (
         <div key={idx} className="prose prose-sm max-w-none prose-p:my-2 prose-headings:font-display">
-          <ReactMarkdown>{part.text}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{part.text}</ReactMarkdown>
         </div>
       );
     }

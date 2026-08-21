@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/hooks/useTheme";
 import { ImpersonationProvider } from "@/hooks/useImpersonation";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { PublicLayout } from "@/components/public/PublicLayout";
+import { CoreCopilot } from "@/components/CoreCopilot";
 import Home from "./pages/public/Home";
 import Opportunities from "./pages/public/Opportunities";
 import HowToInvest from "./pages/public/HowToInvest";
@@ -52,7 +53,9 @@ const App = () => (
               <Route path="/admin/*" element={<ProtectedRoute allow={["admin"]}><AdminPortal /></ProtectedRoute>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <CoreCopilot />
           </ImpersonationProvider>
+
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
