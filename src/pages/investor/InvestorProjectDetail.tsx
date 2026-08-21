@@ -73,9 +73,9 @@ const InvestorProjectDetail = () => {
   }));
 
   const returnCompare = [
-    { name: "Prometido", Retorno: promised ?? 0 },
-    { name: "Proyectado (proyecto)", Retorno: report?.irr_actual != null ? Number(report.irr_actual) : 0 },
-    { name: "Realizado (mis flujos)", Retorno: perf.irr ?? 0 },
+    { name: "Prometido", Retorno: (promised ?? 0) * 100 },
+    { name: "Proyectado (proyecto)", Retorno: (report?.irr_actual != null ? Number(report.irr_actual) : 0) * 100 },
+    { name: "Realizado (mis flujos)", Retorno: (perf.irr ?? 0) * 100 },
   ];
 
   return (
