@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
-import { CoreLogo } from "@/components/CoreLogo";
+import { CoreLogo, CoreLogoBadge } from "@/components/CoreLogo";
 
 const Auth = () => {
   const nav = useNavigate();
@@ -82,7 +82,7 @@ const Auth = () => {
 
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-md">
-          <div className="lg:hidden mb-8 flex justify-center"><CoreLogo className="h-9" /></div>
+          <div className="lg:hidden mb-8 flex justify-center"><CoreLogoBadge className="h-9" /></div>
           <h1 className="font-display text-3xl mb-2">Bienvenido</h1>
           <p className="text-muted-foreground mb-8">Ingresa a tu portal Core</p>
 

@@ -134,14 +134,16 @@
     --shadow-card: 0 1px 3px hsl(0 0% 0% / 0.06), 0 8px 24px -14px hsl(0 0% 0% / 0.15);
     --shadow-gold: 0 8px 28px -10px hsl(64 100% 40% / 0.35);
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 0 0% 15%;
-    --sidebar-primary: 68 90% 24%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 94%;
-    --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 0 0% 88%;
-    --sidebar-ring: 68 90% 30%;
+    /* La barra lateral y el logo Core siempre sobre negro (wordmark blanco) */
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 88%;
+    --sidebar-primary: 64 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 13%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 19%;
+    --sidebar-ring: 64 100% 50%;
+
 
     --chart-1: 68 85% 30%;
     --chart-2: 200 80% 38%;
@@ -184,11 +186,17 @@
   color: hsl(var(--accent-ink));
 }
 .light .bg-hero .text-accent,
+.light .bg-sidebar .text-accent,
+.light .bg-sidebar .hover\:text-accent:hover,
+.light .bg-sidebar .text-sidebar-primary,
 .light .bg-primary .text-accent,
 .light .bg-black .text-accent,
 .light [data-dark-band] .text-accent {
   color: hsl(var(--accent));
 }
+.light .bg-sidebar .bg-accent\/10,
+.light .bg-sidebar .bg-accent\/15,
+.light .bg-sidebar .bg-accent\/20 { background-color: hsl(var(--accent) / 0.15); }
 .light .bg-accent\/10,
 .light .bg-accent\/15,
 .light .bg-accent\/20 {

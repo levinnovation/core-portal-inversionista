@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown, ArrowRight, LogIn } from "lucide-react";
 import { useLeadDialog } from "./LeadDialog";
-import { CoreLogo } from "@/components/CoreLogo";
+import { CoreLogo, CoreLogoBadge } from "@/components/CoreLogo";
 
 const menus = [
   {
@@ -50,7 +50,7 @@ export const PublicNav = () => {
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
         <Link to="/" className="shrink-0">
-          <CoreLogo className="h-7" />
+          {onDark ? <CoreLogo className="h-7" /> : <CoreLogoBadge className="h-7" />}
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">

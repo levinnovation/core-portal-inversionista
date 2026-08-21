@@ -8,7 +8,7 @@ import {
 import { ReactNode, useState } from "react";
 import { NotificationBell } from "@/components/NotificationBell";
 import { PortalSwitcher } from "@/components/PortalSwitcher";
-import { CoreLogo } from "@/components/CoreLogo";
+import { CoreLogo, CoreLogoBadge } from "@/components/CoreLogo";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const nav = [
@@ -95,7 +95,7 @@ export const AdminLayout = ({ children }: { children?: ReactNode }) => {
           <button onClick={() => setOpen(true)} aria-label="Abrir menú" className="p-1.5 rounded-md hover:bg-subtle">
             <Menu className="h-5 w-5" />
           </button>
-          <div className="flex items-center gap-2"><CoreLogo className="h-6" /><span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Admin</span></div>
+          <div className="flex items-center gap-2"><CoreLogoBadge className="h-6" /><span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Admin</span></div>
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <PortalSwitcher />
