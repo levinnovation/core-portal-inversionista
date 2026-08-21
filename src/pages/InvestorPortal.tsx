@@ -3,6 +3,7 @@ import { PortalShell } from "@/components/PortalShell";
 import { LayoutDashboard, Building2, Wallet, FileText, MessageSquare } from "lucide-react";
 import InvestorDashboard from "./investor/InvestorDashboard";
 import InvestorProjects from "./investor/InvestorProjects";
+import InvestorProjectDetail from "./investor/InvestorProjectDetail";
 import InvestorDistributions from "./investor/InvestorDistributions";
 import InvestorDocuments from "./investor/InvestorDocuments";
 import InvestorAgent from "./investor/InvestorAgent";
@@ -23,6 +24,7 @@ const InvestorPortal = () => {
       <Routes>
         <Route index element={<InvestorDashboard />} />
         <Route path="proyectos" element={<InvestorProjects />} />
+        <Route path="proyectos/:id" element={<InvestorProjectDetail />} />
         <Route path="distribuciones" element={<InvestorDistributions />} />
         <Route path="documentos" element={<InvestorDocuments />} />
         <Route path="agente" element={<InvestorAgent />} />

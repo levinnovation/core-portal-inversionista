@@ -511,6 +511,148 @@ export type Database = {
           },
         ]
       }
+      project_report_items: {
+        Row: {
+          created_at: string
+          id: string
+          label: string | null
+          order_index: number
+          report_id: string
+          section: string
+          values: Json
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          label?: string | null
+          order_index?: number
+          report_id: string
+          section: string
+          values?: Json
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          label?: string | null
+          order_index?: number
+          report_id?: string
+          section?: string
+          values?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_report_items_report_id_fkey"
+            columns: ["report_id"]
+            isOneToOne: false
+            referencedRelation: "project_reports"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      project_reports: {
+        Row: {
+          coc_actual: number | null
+          coc_proforma: number | null
+          construction_month: number | null
+          cost_budget_total: number | null
+          cost_executed_pct: number | null
+          created_at: string
+          delinquency_pct: number | null
+          equity_total: number | null
+          expense_executed_pct: number | null
+          financing_disbursed: number | null
+          financing_total: number | null
+          id: string
+          interest_rate: number | null
+          irr_actual: number | null
+          irr_proforma: number | null
+          loan_term: string | null
+          profit_actual: number | null
+          profit_proforma: number | null
+          progress_pct: number | null
+          project_id: string
+          published: boolean
+          report_date: string
+          revenue_projected: number | null
+          sales_pct: number | null
+          sales_placed: number | null
+          status_note: string | null
+          units_sold: number | null
+          units_total: number | null
+          updated_at: string
+        }
+        Insert: {
+          coc_actual?: number | null
+          coc_proforma?: number | null
+          construction_month?: number | null
+          cost_budget_total?: number | null
+          cost_executed_pct?: number | null
+          created_at?: string
+          delinquency_pct?: number | null
+          equity_total?: number | null
+          expense_executed_pct?: number | null
+          financing_disbursed?: number | null
+          financing_total?: number | null
+          id?: string
+          interest_rate?: number | null
+          irr_actual?: number | null
+          irr_proforma?: number | null
+          loan_term?: string | null
+          profit_actual?: number | null
+          profit_proforma?: number | null
+          progress_pct?: number | null
+          project_id: string
+          published?: boolean
+          report_date: string
+          revenue_projected?: number | null
+          sales_pct?: number | null
+          sales_placed?: number | null
+          status_note?: string | null
+          units_sold?: number | null
+          units_total?: number | null
+          updated_at?: string
+        }
+        Update: {
+          coc_actual?: number | null
+          coc_proforma?: number | null
+          construction_month?: number | null
+          cost_budget_total?: number | null
+          cost_executed_pct?: number | null
+          created_at?: string
+          delinquency_pct?: number | null
+          equity_total?: number | null
+          expense_executed_pct?: number | null
+          financing_disbursed?: number | null
+          financing_total?: number | null
+          id?: string
+          interest_rate?: number | null
+          irr_actual?: number | null
+          irr_proforma?: number | null
+          loan_term?: string | null
+          profit_actual?: number | null
+          profit_proforma?: number | null
+          progress_pct?: number | null
+          project_id?: string
+          published?: boolean
+          report_date?: string
+          revenue_projected?: number | null
+          sales_pct?: number | null
+          sales_placed?: number | null
+          status_note?: string | null
+          units_sold?: number | null
+          units_total?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_reports_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       projects: {
         Row: {
           budget_total: number | null
