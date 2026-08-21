@@ -175,3 +175,22 @@
   .shadow-gold { box-shadow: var(--shadow-gold); }
   .shadow-gold-hover { box-shadow: 0 10px 32px -10px hsl(38 65% 52% / 0.55); }
 }
+
+/* En modo claro el amarillo Core no es legible como texto: se usa una tinta
+   oscura derivada de la marca, salvo dentro de bandas oscuras (hero/negro). */
+.light .text-accent,
+.light .hover\:text-accent:hover,
+.light .text-sidebar-primary {
+  color: hsl(var(--accent-ink));
+}
+.light .bg-hero .text-accent,
+.light .bg-primary .text-accent,
+.light .bg-black .text-accent,
+.light [data-dark-band] .text-accent {
+  color: hsl(var(--accent));
+}
+.light .bg-accent\/10,
+.light .bg-accent\/15,
+.light .bg-accent\/20 {
+  background-color: hsl(var(--accent-ink) / 0.12);
+}
