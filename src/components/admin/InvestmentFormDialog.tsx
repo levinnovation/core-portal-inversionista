@@ -18,7 +18,7 @@ export const InvestmentFormDialog = ({ open, onOpenChange, onSaved, investorId }
   const [projects, setProjects] = useState<any[]>([]);
   const [form, setForm] = useState({
     project_id: "", amount_invested: "", investment_date: new Date().toISOString().slice(0, 10),
-    investment_type: "equity", ownership_percentage: "",
+    investment_type: "equity", ownership_percentage: "", target_return_pct: "",
   });
   const [busy, setBusy] = useState(false);
 
@@ -37,11 +37,12 @@ export const InvestmentFormDialog = ({ open, onOpenChange, onSaved, investorId }
       investment_date: form.investment_date,
       investment_type: form.investment_type as any,
       ownership_percentage: form.ownership_percentage ? Number(form.ownership_percentage) : null,
-    });
+      target_return_pct: form.target_return_pct ? Number(form.target_return_pct) / 100 : null,
+    } as any);
     setBusy(false);
     if (error) return toast.error(error.message);
     toast.success("Inversión registrada");
-    setForm({ project_id: "", amount_invested: "", investment_date: new Date().toISOString().slice(0, 10), investment_type: "equity", ownership_percentage: "" });
+    setForm({ project_id: "", amount_invested: "", investment_date: new Date().toISOString().slice(0, 10), investment_type: "equity", ownership_percentage: "", target_return_pct: "" });
     onOpenChange(false);
     onSaved();
   };
@@ -75,6 +76,7 @@ export const InvestmentFormDialog = ({ open, onOpenChange, onSaved, investorId }
               </Select>
             </div>
             <div><Label>% Participación</Label><Input type="number" step="0.01" value={form.ownership_percentage} onChange={(e) => setForm({ ...form, ownership_percentage: e.target.value })} /></div>
+            <div><Label>Retorno prometido anual (%)</Label><Input type="number" step="0.1" placeholder="Ej. 12" value={form.target_return_pct} onChange={(e) => setForm({ ...form, target_return_pct: e.target.value })} /></div>
           </div>
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>Cancelar</Button>

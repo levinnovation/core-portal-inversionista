@@ -230,6 +230,7 @@ export type Database = {
           ownership_percentage: number | null
           project_id: string
           status: string
+          target_return_pct: number | null
         }
         Insert: {
           amount_invested: number
@@ -241,6 +242,7 @@ export type Database = {
           ownership_percentage?: number | null
           project_id: string
           status?: string
+          target_return_pct?: number | null
         }
         Update: {
           amount_invested?: number
@@ -252,6 +254,7 @@ export type Database = {
           ownership_percentage?: number | null
           project_id?: string
           status?: string
+          target_return_pct?: number | null
         }
         Relationships: [
           {

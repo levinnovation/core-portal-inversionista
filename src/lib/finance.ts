@@ -167,3 +167,71 @@ export function buildCashFlows(
 export const fmtPct = (n: number, digits = 1) =>
   isFinite(n) ? `${(n * 100).toFixed(digits)}%` : "—";
 export const fmtMultiple = (n: number) => (isFinite(n) && n > 0 ? `${n.toFixed(2)}x` : "—");
+
+/**
+ * Métricas por proyecto para un inversionista: capital, distribuciones,
+ * ROI acumulado, cash-on-cash (12m), TIR anualizada (con valor residual a costo)
+ * y comparación entre el retorno prometido y el proyectado.
+ */
+export interface ProjectPerformance {
+  invested: number;
+  distributed: number;
+  roi: number;                 // distribuido / invertido - 1
+  cashOnCash: number;          // distribuciones últimos 12m / invertido
+  irr: number | null;          // TIR anualizada
+  promisedAnnual: number | null; // promesa de retorno anual ponderada
+  projectedAnnual: number | null; // proyección anualizada (TIR o ROI anualizado)
+  deltaAnnual: number | null;  // proyectado - prometido
+  monthsHeld: number;
+  firstDate: Date | null;
+  timeline: { date: string; amount: number; cumulative: number; type: string }[];
+}
+
+export function projectPerformance(investments: any[], distributions: any[]): ProjectPerformance {
+  const invested = investments.reduce((s, i) => s + Math.abs(Number(i.amount_invested || 0)), 0);
+  const distributed = distributions.reduce((s, d) => s + Math.abs(Number(d.amount || 0)), 0);
+  const dates = investments.map((i) => new Date(i.investment_date)).filter((d) => !isNaN(d.getTime()));
+  const firstDate = dates.length ? new Date(Math.min(...dates.map((d) => d.getTime()))) : null;
+  const monthsHeld = firstDate ? Math.max((Date.now() - firstDate.getTime()) / (30.44 * 24 * 3600 * 1000), 0) : 0;
+  const years = monthsHeld / 12;
+
+  const irr = xirr(buildCashFlows(investments, distributions));
+
+  const promisedWeighted = invested > 0
+    ? investments.reduce((s, i) => {
+        const t = i.target_return_pct;
+        return t == null ? s : s + Number(t) * Math.abs(Number(i.amount_invested || 0));
+      }, 0) / invested
+    : 0;
+  const hasPromise = investments.some((i) => i.target_return_pct != null);
+  const promisedAnnual = hasPromise ? promisedWeighted : null;
+
+  const roi = invested > 0 ? distributed / invested - 1 : 0;
+  let projectedAnnual: number | null = irr;
+  if (projectedAnnual === null && invested > 0 && years > 0.25) {
+    projectedAnnual = (distributed / invested) / years;
+  }
+
+  const sorted = [...distributions].sort(
+    (a, b) => new Date(a.distribution_date).getTime() - new Date(b.distribution_date).getTime()
+  );
+  let cum = 0;
+  const timeline = sorted.map((d) => {
+    cum += Number(d.amount || 0);
+    return { date: d.distribution_date, amount: Number(d.amount || 0), cumulative: cum, type: String(d.type || "") };
+  });
+
+  return {
+    invested,
+    distributed,
+    roi,
+    cashOnCash: cashOnCash(invested, distributions as any),
+    irr,
+    promisedAnnual,
+    projectedAnnual,
+    deltaAnnual: promisedAnnual != null && projectedAnnual != null ? projectedAnnual - promisedAnnual : null,
+    monthsHeld,
+    firstDate,
+    timeline,
+  };
+}

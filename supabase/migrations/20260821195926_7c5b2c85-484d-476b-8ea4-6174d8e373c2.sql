@@ -1,0 +1,2 @@
+ALTER TABLE public.investments ADD COLUMN IF NOT EXISTS target_return_pct numeric;
+UPDATE public.investments SET target_return_pct = CASE investment_type WHEN 'debt' THEN 0.10 WHEN 'preferred' THEN 0.12 ELSE 0.15 END WHERE target_return_pct IS NULL;
