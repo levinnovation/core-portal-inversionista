@@ -40,7 +40,7 @@ export const CustomerFormDialog = ({ open, onOpenChange, onSaved }: { open: bool
           <div><Label>Documento</Label><Input value={form.id_number} onChange={(e) => setForm({ ...form, id_number: e.target.value })} /></div>
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>Cancelar</Button>
-            <Button type="submit" disabled={busy} className="bg-primary text-primary-foreground hover:bg-primary-glow">{busy ? "Guardando…" : "Guardar"}</Button>
+            <Button type="submit" disabled={busy} className="bg-accent text-accent-foreground hover:bg-accent/90">{busy ? "Guardando…" : "Guardar"}</Button>
           </DialogFooter>
         </form>
       </DialogContent>

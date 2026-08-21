@@ -81,7 +81,7 @@ const Auth = () => {
 
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-md">
-          <div className="lg:hidden font-display text-2xl text-primary mb-8 text-center">CORE</div>
+          <div className="lg:hidden font-display text-2xl text-accent mb-8 text-center">CORE</div>
           <h1 className="font-display text-3xl mb-2">Bienvenido</h1>
           <p className="text-muted-foreground mb-8">Ingresa a tu portal Core</p>
 
@@ -104,14 +104,14 @@ const Auth = () => {
                       type="button"
                       onClick={handleReset}
                       disabled={busy}
-                      className="text-xs text-muted-foreground hover:text-primary underline underline-offset-2"
+                      className="text-xs text-muted-foreground hover:text-accent underline underline-offset-2"
                     >
                       ¿Olvidaste tu contraseña?
                     </button>
                   </div>
                   <Input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <Button type="submit" disabled={busy} className="w-full bg-primary text-primary-foreground hover:bg-primary-glow">
+                <Button type="submit" disabled={busy} className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
                   {busy ? "Ingresando…" : "Ingresar"}
                 </Button>
               </form>
@@ -131,7 +131,7 @@ const Auth = () => {
                   <Label>Contraseña</Label>
                   <Input type="password" required minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <Button type="submit" disabled={busy} className="w-full bg-primary text-primary-foreground hover:bg-primary-glow">
+                <Button type="submit" disabled={busy} className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
                   {busy ? "Creando…" : "Crear cuenta"}
                 </Button>
               </form>

@@ -61,7 +61,7 @@ export const PortalMock = ({ variant }: { variant: 0 | 1 | 2 }) => {
           ].map((m) => (
             <div key={m.k} className="rounded-md border border-border p-3 min-w-0">
               <div className="text-[9px] uppercase tracking-wider text-muted-foreground">{m.k}</div>
-              <div className="font-display text-xl text-primary truncate">{m.v}</div>
+              <div className="font-display text-xl text-accent truncate">{m.v}</div>
             </div>
           ))}
         </div>

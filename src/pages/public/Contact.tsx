@@ -31,7 +31,7 @@ const Contact = () => {
           <div className="space-y-6">
             {info.map(({ icon: Icon, label, value }) => (
               <div key={label} className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-md bg-accent-soft flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-md bg-accent/15 flex items-center justify-center shrink-0">
                   <Icon className="h-5 w-5 text-accent" />
                 </div>
                 <div className="min-w-0">

@@ -27,7 +27,7 @@ export const StatsBar = ({ items }: { items: { value: string; label: string }[] 
   <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-border border border-border rounded-lg bg-card shadow-card overflow-hidden">
     {items.map((s) => (
       <div key={s.label} className="p-6 text-center min-w-0">
-        <div className="font-display text-3xl md:text-4xl text-primary truncate">{s.value}</div>
+        <div className="font-display text-3xl md:text-4xl text-accent truncate">{s.value}</div>
         <div className="text-xs uppercase tracking-[0.15em] text-muted-foreground mt-2">{s.label}</div>
       </div>
     ))}
@@ -119,7 +119,7 @@ export const CtaBand = ({
             Solicitar acceso <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
           <Link to="/auth">
-            <Button size="lg" variant="outline" className="w-full sm:w-auto bg-transparent border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
+            <Button size="lg" variant="outline" className="w-full sm:w-auto bg-transparent border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10 hover:text-foreground">
               <LogIn className="mr-2 h-4 w-4" /> Ya soy inversionista
             </Button>
           </Link>

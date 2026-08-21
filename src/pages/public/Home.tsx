@@ -57,7 +57,7 @@ const Home = () => {
                   Solicitar acceso <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Link to="/oportunidades">
-                  <Button size="lg" variant="outline" className="w-full sm:w-auto bg-transparent border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
+                  <Button size="lg" variant="outline" className="w-full sm:w-auto bg-transparent border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10 hover:text-foreground">
                     Ver proyectos
                   </Button>
                 </Link>
@@ -205,7 +205,7 @@ const Home = () => {
           <SectionHeading eyebrow="Preguntas frecuentes" title="Antes de invertir" />
           <FaqAccordion items={homeFaqs} />
           <div className="text-center mt-8">
-            <Link to="/faq" className="text-sm text-primary hover:text-accent underline underline-offset-4">
+            <Link to="/faq" className="text-sm text-accent hover:text-accent underline underline-offset-4">
               Ver todas las preguntas
             </Link>
           </div>

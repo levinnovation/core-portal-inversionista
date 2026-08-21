@@ -111,7 +111,7 @@ export const LeadForm = ({
         <Textarea id="lead-message" rows={3} maxLength={1000} value={form.message} onChange={(e) => set("message", e.target.value)} />
       </div>
 
-      <Button type="submit" disabled={busy} className="w-full bg-primary text-primary-foreground hover:bg-primary-glow">
+      <Button type="submit" disabled={busy} className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
         {busy ? "Enviando…" : "Enviar solicitud"}
       </Button>
       <p className="text-xs text-muted-foreground">

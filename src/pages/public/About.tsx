@@ -66,7 +66,7 @@ const About = () => {
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
             {team.map((m) => (
               <div key={m.name} className="bg-card border border-border rounded-lg p-7 shadow-card text-center">
-                <div className="w-16 h-16 rounded-full bg-accent-soft mx-auto mb-4 flex items-center justify-center font-display text-xl text-accent-foreground">
+                <div className="w-16 h-16 rounded-full bg-accent/15 mx-auto mb-4 flex items-center justify-center font-display text-xl text-foreground">
                   {m.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
                 </div>
                 <div className="font-display text-lg">{m.name}</div>

@@ -33,7 +33,7 @@ const Onboarding = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-subtle p-8">
       <div className="bg-card border border-border rounded-lg p-10 max-w-lg shadow-card text-center">
-        <div className="w-14 h-14 rounded-full bg-accent-soft mx-auto mb-5 flex items-center justify-center">
+        <div className="w-14 h-14 rounded-full bg-accent/15 mx-auto mb-5 flex items-center justify-center">
           {isLoading ? (
             <Loader2 className="h-6 w-6 text-accent animate-spin" />
           ) : rolesError ? (

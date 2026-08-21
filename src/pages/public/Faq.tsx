@@ -21,7 +21,7 @@ const Faq = () => {
         <div className="max-w-3xl mx-auto space-y-14">
           {faqs.map((cat) => (
             <div key={cat.category}>
-              <h2 className="font-display text-2xl mb-4 text-accent-foreground">{cat.category}</h2>
+              <h2 className="font-display text-2xl mb-4 text-foreground">{cat.category}</h2>
               <FaqAccordion items={cat.items} />
             </div>
           ))}

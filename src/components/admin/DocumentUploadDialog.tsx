@@ -149,7 +149,7 @@ export const DocumentUploadDialog = ({ open, onOpenChange, onSaved, entityType, 
           </div>
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>Cancelar</Button>
-            <Button type="submit" disabled={busy} className="bg-primary text-primary-foreground hover:bg-primary-glow">
+            <Button type="submit" disabled={busy} className="bg-accent text-accent-foreground hover:bg-accent/90">
               {busy ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Subiendo…</> : <><Upload className="h-4 w-4 mr-2" />Subir</>}
             </Button>
           </DialogFooter>

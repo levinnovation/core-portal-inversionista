@@ -51,7 +51,7 @@ const ProjectDetail = () => {
       action={
         <div className="flex gap-2">
           <Link to="/admin/proyectos"><Button variant="outline" size="sm"><ArrowLeft className="h-4 w-4 mr-2" />Volver</Button></Link>
-          <Button onClick={() => setEditOpen(true)} className="bg-primary text-primary-foreground hover:bg-primary-glow">
+          <Button onClick={() => setEditOpen(true)} className="bg-accent text-accent-foreground hover:bg-accent/90">
             <Edit className="h-4 w-4 mr-2" /> Editar
           </Button>
         </div>

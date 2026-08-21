@@ -32,7 +32,7 @@ const ProjectsList = () => {
     <AdminPage
       title="Proyectos"
       action={
-        <Button onClick={() => setOpen(true)} className="bg-primary text-primary-foreground hover:bg-primary-glow">
+        <Button onClick={() => setOpen(true)} className="bg-accent text-accent-foreground hover:bg-accent/90">
           <Plus className="h-4 w-4 mr-2" /> Nuevo proyecto
         </Button>
       }
@@ -43,7 +43,7 @@ const ProjectsList = () => {
         <div className="bg-card border border-dashed border-border rounded-lg p-16 text-center">
           <h3 className="font-display text-xl mb-2">No hay proyectos aún</h3>
           <p className="text-muted-foreground mb-6">Crea tu primer proyecto para comenzar.</p>
-          <Button onClick={() => setOpen(true)} className="bg-primary text-primary-foreground">
+          <Button onClick={() => setOpen(true)} className="bg-accent text-foreground">
             <Plus className="h-4 w-4 mr-2" /> Crear proyecto
           </Button>
         </div>

@@ -39,7 +39,7 @@ export const PublicNav = () => {
 
   const textBase = onDark
     ? "text-primary-foreground/85 hover:text-accent"
-    : "text-foreground/80 hover:text-primary";
+    : "text-foreground/80 hover:text-accent";
 
   return (
     <header
@@ -48,7 +48,7 @@ export const PublicNav = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
-        <Link to="/" className={`font-display text-2xl tracking-tight shrink-0 ${onDark ? "text-accent" : "text-primary"}`}>
+        <Link to="/" className={`font-display text-2xl tracking-tight shrink-0 ${onDark ? "text-accent" : "text-accent"}`}>
           CORE
         </Link>
 
@@ -81,7 +81,7 @@ export const PublicNav = () => {
             <Button
               variant="ghost"
               size="sm"
-              className={onDark ? "text-primary-foreground/90 hover:text-accent hover:bg-primary-foreground/10" : "text-foreground/80 hover:text-primary hover:bg-secondary"}
+              className={onDark ? "text-primary-foreground/90 hover:text-accent hover:bg-primary-foreground/10" : "text-foreground/80 hover:text-accent hover:bg-secondary"}
             >
               Iniciar sesión
             </Button>
