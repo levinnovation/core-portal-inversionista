@@ -216,7 +216,7 @@ export const soldProjects: Opportunity[] = [
   },
   {
     slug: "metro",
-    name: "Metro",
+    name: "Metropolitan Tower",
     location: "San José",
     city: "San José",
     stage: "Vendido",
@@ -274,7 +274,7 @@ export const aiExamples = [
 export const differentiators = [
   { title: "Hábitat urbano", body: "Core no vende metros cuadrados: construye comunidad en zonas caminables de San José." },
   { title: "Operación propia", body: "Los proyectos hospitality son diseñados, operados y administrados por el mismo equipo que los desarrolla." },
-  { title: "Track record entregado", body: "URBN Escalante, Cosmopolitan Tower, SECRT Sabana y Metro: proyectos colocados en su totalidad." },
+  { title: "Track record entregado", body: "URBN Escalante, Cosmopolitan Tower, SECRT Sabana y Metropolitan Tower: proyectos colocados en su totalidad." },
   { title: "Obra documentada", body: "Fotografía y bitácora de cada fase constructiva, actualizada por el equipo de proyecto." },
   { title: "Expediente legal", body: "Contratos, escrituras y adendas disponibles para descarga desde tu portafolio." },
   { title: "Asistente con IA", body: "Preguntá en lenguaje natural por tu posición, tus pagos o tus documentos y obtené la respuesta con su fuente." },

@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown, ArrowRight, LogIn } from "lucide-react";
 import { useLeadDialog } from "./LeadDialog";
+import { CoreLogo } from "@/components/CoreLogo";
 
 const menus = [
   {
