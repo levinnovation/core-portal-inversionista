@@ -48,8 +48,8 @@ export const PublicNav = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
-        <Link to="/" className={`font-display text-2xl tracking-tight shrink-0 ${onDark ? "text-accent" : "text-accent"}`}>
-          CORE
+        <Link to="/" className="shrink-0">
+          <CoreLogo className="h-7" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
