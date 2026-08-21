@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { CoreLogo } from "@/components/CoreLogo";
 
 const ResetPassword = () => {
   const nav = useNavigate();
@@ -60,7 +61,7 @@ const ResetPassword = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-subtle p-8">
       <div className="w-full max-w-md bg-card border border-border rounded-lg p-8 shadow-card">
-        <Link to="/" className="font-display text-2xl text-accent block mb-6">CORE</Link>
+        <Link to="/" className="block mb-6"><CoreLogo className="h-8" /></Link>
         <h1 className="font-display text-3xl mb-2">Restablecer contraseña</h1>
 
         {!ready ? (

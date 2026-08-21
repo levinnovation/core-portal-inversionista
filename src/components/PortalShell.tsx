@@ -6,6 +6,7 @@ import { LogOut, Menu, X, User } from "lucide-react";
 import { NotificationBell } from "@/components/NotificationBell";
 import { PortalSwitcher } from "@/components/PortalSwitcher";
 import { ImpersonateMenu } from "@/components/ImpersonateMenu";
+import { CoreLogo } from "@/components/CoreLogo";
 
 interface NavItem { to: string; label: string; icon?: ReactNode }
 
@@ -25,7 +26,7 @@ export const PortalShell = ({ title, subtitle, nav, children }: Props) => {
     <aside className="w-64 bg-sidebar text-sidebar-foreground flex flex-col border-r border-sidebar-border h-full">
       <div className="px-6 py-7 border-b border-sidebar-border flex items-center justify-between">
         <div>
-          <div className="font-display text-2xl text-accent tracking-tight">CORE</div>
+          <CoreLogo className="h-7" />
           <div className="text-xs uppercase tracking-[0.2em] text-sidebar-foreground/60 mt-1">{subtitle}</div>
         </div>
         <button
