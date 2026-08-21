@@ -105,7 +105,7 @@ export const AIAssistant = ({
               <div
                 className={`max-w-[85%] rounded-lg px-4 py-3 text-sm ${
                   m.role === "user"
-                    ? "bg-primary text-primary-foreground"
+                    ? "bg-accent text-accent-foreground"
                     : "bg-subtle border border-border text-foreground"
                 }`}
               >

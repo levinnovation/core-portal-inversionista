@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
+import { CoreLogo } from "@/components/CoreLogo";
 
 const Auth = () => {
   const nav = useNavigate();
@@ -69,7 +70,7 @@ const Auth = () => {
   return (
     <div className="min-h-screen flex bg-subtle">
       <div className="hidden lg:flex flex-1 bg-hero p-16 flex-col justify-between text-primary-foreground">
-        <Link to="/" className="font-display text-3xl text-accent tracking-tight">CORE</Link>
+        <Link to="/"><CoreLogo className="h-10" /></Link>
         <div>
           <div className="text-accent text-xs tracking-[0.3em] uppercase mb-4">Portal seguro</div>
           <h2 className="font-display text-4xl leading-tight max-w-md">
@@ -81,7 +82,7 @@ const Auth = () => {
 
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-md">
-          <div className="lg:hidden font-display text-2xl text-primary mb-8 text-center">CORE</div>
+          <div className="lg:hidden mb-8 flex justify-center"><CoreLogo className="h-9" /></div>
           <h1 className="font-display text-3xl mb-2">Bienvenido</h1>
           <p className="text-muted-foreground mb-8">Ingresa a tu portal Core</p>
 
@@ -104,14 +105,14 @@ const Auth = () => {
                       type="button"
                       onClick={handleReset}
                       disabled={busy}
-                      className="text-xs text-muted-foreground hover:text-primary underline underline-offset-2"
+                      className="text-xs text-muted-foreground hover:text-accent underline underline-offset-2"
                     >
                       ¿Olvidaste tu contraseña?
                     </button>
                   </div>
                   <Input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <Button type="submit" disabled={busy} className="w-full bg-primary text-primary-foreground hover:bg-primary-glow">
+                <Button type="submit" disabled={busy} className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
                   {busy ? "Ingresando…" : "Ingresar"}
                 </Button>
               </form>
@@ -131,7 +132,7 @@ const Auth = () => {
                   <Label>Contraseña</Label>
                   <Input type="password" required minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <Button type="submit" disabled={busy} className="w-full bg-primary text-primary-foreground hover:bg-primary-glow">
+                <Button type="submit" disabled={busy} className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
                   {busy ? "Creando…" : "Crear cuenta"}
                 </Button>
               </form>

@@ -67,7 +67,7 @@ export const UnitFormDialog = ({ open, onOpenChange, onSaved, projectId }: Props
           </div>
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>Cancelar</Button>
-            <Button type="submit" disabled={busy} className="bg-primary text-primary-foreground hover:bg-primary-glow">{busy ? "Guardando…" : "Guardar"}</Button>
+            <Button type="submit" disabled={busy} className="bg-accent text-accent-foreground hover:bg-accent/90">{busy ? "Guardando…" : "Guardar"}</Button>
           </DialogFooter>
         </form>
       </DialogContent>

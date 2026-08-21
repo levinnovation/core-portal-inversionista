@@ -30,7 +30,7 @@ const statusLabel: Record<LeadStatus, string> = {
 };
 
 const statusClass: Record<LeadStatus, string> = {
-  new: "bg-accent-soft text-accent-foreground",
+  new: "bg-accent/15 text-accent",
   contacted: "bg-secondary text-secondary-foreground",
   qualified: "bg-success/15 text-success",
   discarded: "bg-muted text-muted-foreground",
@@ -109,11 +109,11 @@ const LeadsList = () => {
                     <span className="text-xs text-muted-foreground">{l.source}</span>
                   </div>
                   <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mt-2">
-                    <a href={`mailto:${l.email}`} className="flex items-center gap-1.5 hover:text-primary">
+                    <a href={`mailto:${l.email}`} className="flex items-center gap-1.5 hover:text-accent">
                       <Mail className="h-3.5 w-3.5" /> {l.email}
                     </a>
                     {l.phone && (
-                      <a href={`tel:${l.phone}`} className="flex items-center gap-1.5 hover:text-primary">
+                      <a href={`tel:${l.phone}`} className="flex items-center gap-1.5 hover:text-accent">
                         <Phone className="h-3.5 w-3.5" /> {l.phone}
                       </a>
                     )}

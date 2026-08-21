@@ -395,7 +395,7 @@ const InvestorProjectDetail = () => {
                     <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                     <XAxis dataKey="name" tick={{ fontSize: 11 }} stroke="hsl(var(--muted-foreground))" />
                     <YAxis tick={{ fontSize: 11 }} stroke="hsl(var(--muted-foreground))" tickFormatter={(v) => `${(v / 1e6).toFixed(0)}M`} />
-                    <RTooltip formatter={(v: any) => fmtUSD(Number(v))} contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))" }} />
+                    <RTooltip formatter={(v: any) => fmtUSD(Number(v))} contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", color: "hsl(var(--card-foreground))" }} />
                     <Legend wrapperStyle={{ fontSize: 12 }} />
                     <Bar dataKey="Neto" fill="hsl(var(--accent))" radius={[3, 3, 0, 0]} />
                   </BarChart>
@@ -407,7 +407,7 @@ const InvestorProjectDetail = () => {
                     <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                     <XAxis dataKey="name" tick={{ fontSize: 11 }} stroke="hsl(var(--muted-foreground))" />
                     <YAxis tick={{ fontSize: 11 }} stroke="hsl(var(--muted-foreground))" tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
-                    <RTooltip formatter={(v: any) => fmtUSD(Number(v))} contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))" }} />
+                    <RTooltip formatter={(v: any) => fmtUSD(Number(v))} contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", color: "hsl(var(--card-foreground))" }} />
                     <Legend wrapperStyle={{ fontSize: 12 }} />
                     <Area type="monotone" dataKey="Mi flujo" stroke="hsl(var(--accent))" fill="hsl(var(--accent) / 0.2)" />
                   </AreaChart>

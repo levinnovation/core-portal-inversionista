@@ -19,7 +19,7 @@ import {
   Legend,
 } from "recharts";
 
-const COLORS = ["hsl(var(--accent))", "hsl(var(--primary))", "hsl(var(--muted-foreground))", "#A8B5C7", "#D4AF7A"];
+const COLORS = ["hsl(var(--accent))", "hsl(0 0% 75%)", "hsl(0 0% 45%)", "hsl(64 60% 35%)", "hsl(0 0% 60%)"];
 
 const InvestorDashboard = () => {
   const { user } = useAuth();
@@ -110,7 +110,7 @@ const InvestorDashboard = () => {
                 <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={12} />
                 <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickFormatter={(v) => `$${(v/1000).toFixed(0)}k`} />
                 <Tooltip
-                  contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 8 }}
+                  contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", color: "hsl(var(--card-foreground))", borderRadius: 8 }}
                   formatter={(v: number) => fmtUSD(v)}
                 />
                 <Line type="monotone" dataKey="value" stroke="hsl(var(--accent))" strokeWidth={2.5} dot={{ r: 4 }} />
@@ -134,7 +134,7 @@ const InvestorDashboard = () => {
                     <Cell key={i} fill={COLORS[i % COLORS.length]} />
                   ))}
                 </Pie>
-                <Tooltip formatter={(v: number) => fmtUSD(v)} contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 8 }} />
+                <Tooltip formatter={(v: number) => fmtUSD(v)} contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", color: "hsl(var(--card-foreground))", borderRadius: 8 }} />
                 <Legend wrapperStyle={{ fontSize: 11 }} verticalAlign="bottom" height={36} iconSize={8} />
               </PieChart>
             </ResponsiveContainer>

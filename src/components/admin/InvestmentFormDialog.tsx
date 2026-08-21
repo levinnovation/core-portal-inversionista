@@ -80,7 +80,7 @@ export const InvestmentFormDialog = ({ open, onOpenChange, onSaved, investorId }
           </div>
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>Cancelar</Button>
-            <Button type="submit" disabled={busy || !form.project_id} className="bg-primary text-primary-foreground hover:bg-primary-glow">{busy ? "Guardando…" : "Registrar"}</Button>
+            <Button type="submit" disabled={busy || !form.project_id} className="bg-accent text-accent-foreground hover:bg-accent/90">{busy ? "Guardando…" : "Registrar"}</Button>
           </DialogFooter>
         </form>
       </DialogContent>

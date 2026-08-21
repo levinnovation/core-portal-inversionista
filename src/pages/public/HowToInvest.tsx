@@ -76,7 +76,7 @@ const HowToInvest = () => {
             <div key={o.slug} className="bg-card border border-border rounded-lg p-7 shadow-card text-center">
               <img src={o.logo} alt={`Logo ${o.name}`} loading="lazy" className="h-8 w-auto object-contain mx-auto mb-4 brightness-0 opacity-85" />
               <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">{o.type}</div>
-              <div className="font-display text-2xl text-primary mb-2">{o.model}</div>
+              <div className="font-display text-2xl text-accent mb-2">{o.model}</div>
               <div className="text-sm text-muted-foreground">{o.name} · {o.location}</div>
             </div>
           ))}

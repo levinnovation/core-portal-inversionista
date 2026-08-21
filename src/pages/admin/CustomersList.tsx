@@ -26,7 +26,7 @@ const CustomersList = () => {
     <AdminPage
       title="Clientes"
       action={
-        <Button onClick={() => setOpen(true)} className="bg-primary text-primary-foreground hover:bg-primary-glow">
+        <Button onClick={() => setOpen(true)} className="bg-accent text-accent-foreground hover:bg-accent/90">
           <Plus className="h-4 w-4 mr-2" /> Nuevo cliente
         </Button>
       }
@@ -34,7 +34,7 @@ const CustomersList = () => {
       {customers.length === 0 ? (
         <div className="bg-card border border-dashed border-border rounded-lg p-16 text-center">
           <h3 className="font-display text-xl mb-2">No hay clientes registrados</h3>
-          <Button onClick={() => setOpen(true)} className="bg-primary text-primary-foreground mt-4">
+          <Button onClick={() => setOpen(true)} className="bg-accent text-accent-foreground mt-4">
             <Plus className="h-4 w-4 mr-2" /> Crear cliente
           </Button>
         </div>

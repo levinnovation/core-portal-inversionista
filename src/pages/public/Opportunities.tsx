@@ -39,7 +39,7 @@ const Opportunities = () => {
             key={o}
             onClick={() => onChange(o)}
             className={`px-3 py-1.5 rounded-full text-xs border transition-colors ${
-              value === o ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground hover:border-accent"
+              value === o ? "bg-accent text-accent-foreground border-accent" : "border-border text-muted-foreground hover:border-accent"
             }`}
           >
             {o}
@@ -81,7 +81,7 @@ const Opportunities = () => {
                 <img src={o.image} alt={`${o.name}, ${o.location}`} loading="lazy" width={1280} height={860} className="w-full h-56 md:h-full object-cover" />
                 <div className="p-7 min-w-0">
                   <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <span className="bg-accent-soft text-accent-foreground text-xs px-3 py-1 rounded-full">{o.stage}</span>
+                    <span className="bg-accent/15 text-accent text-xs px-3 py-1 rounded-full">{o.stage}</span>
                     <span className="text-xs text-muted-foreground">{o.type}</span>
                   </div>
                   <img src={o.logo} alt={`Logo ${o.name}`} loading="lazy" className="h-8 w-auto object-contain mb-3 brightness-0 opacity-85" />
@@ -117,7 +117,7 @@ const Opportunities = () => {
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         {o.publishedFigures.map((f) => (
                           <div key={f.label} className="min-w-0">
-                            <div className="font-display text-2xl text-primary">{f.value}</div>
+                            <div className="font-display text-2xl text-accent">{f.value}</div>
                             <div className="text-xs text-muted-foreground leading-snug mt-1">{f.label}</div>
                           </div>
                         ))}

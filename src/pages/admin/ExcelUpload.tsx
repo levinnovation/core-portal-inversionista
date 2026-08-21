@@ -180,7 +180,7 @@ const ExcelUpload = () => {
                 </table>
               </div>
 
-              <Button onClick={upload} disabled={busy || errors.length > 0} className="w-full bg-primary text-primary-foreground hover:bg-primary-glow">
+              <Button onClick={upload} disabled={busy || errors.length > 0} className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
                 {busy ? "Cargando…" : `Confirmar e insertar ${rows.length} registros`}
               </Button>
             </div>

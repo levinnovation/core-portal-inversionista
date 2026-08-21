@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { CoreLogo } from "@/components/CoreLogo";
 
 const ResetPassword = () => {
   const nav = useNavigate();
@@ -60,7 +61,7 @@ const ResetPassword = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-subtle p-8">
       <div className="w-full max-w-md bg-card border border-border rounded-lg p-8 shadow-card">
-        <Link to="/" className="font-display text-2xl text-primary block mb-6">CORE</Link>
+        <Link to="/" className="block mb-6"><CoreLogo className="h-8" /></Link>
         <h1 className="font-display text-3xl mb-2">Restablecer contraseña</h1>
 
         {!ready ? (
@@ -83,7 +84,7 @@ const ResetPassword = () => {
                   onChange={(e) => setCode(e.target.value)}
                 />
               </div>
-              <Button type="submit" disabled={busy} className="w-full bg-primary text-primary-foreground hover:bg-primary-glow">
+              <Button type="submit" disabled={busy} className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
                 {busy ? "Verificando…" : "Verificar código"}
               </Button>
             </form>
@@ -100,14 +101,14 @@ const ResetPassword = () => {
                 <Label>Confirmar contraseña</Label>
                 <Input type="password" required minLength={6} value={confirm} onChange={(e) => setConfirm(e.target.value)} />
               </div>
-              <Button type="submit" disabled={busy} className="w-full bg-primary text-primary-foreground hover:bg-primary-glow">
+              <Button type="submit" disabled={busy} className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
                 {busy ? "Guardando…" : "Guardar contraseña"}
               </Button>
             </form>
           </>
         )}
 
-        <Link to="/auth" className="block mt-6 text-sm text-muted-foreground hover:text-primary">
+        <Link to="/auth" className="block mt-6 text-sm text-muted-foreground hover:text-accent">
           Volver a iniciar sesión
         </Link>
       </div>

@@ -49,14 +49,14 @@ const CustomerOverview = () => {
   return (
     <div className="space-y-8">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground rounded-lg p-8 shadow-card">
-        <div className="text-xs uppercase tracking-[0.2em] text-primary-foreground/70 mb-2">Tu apartamento</div>
+      <div className="bg-gradient-to-br from-secondary to-card border border-border text-foreground rounded-lg p-8 shadow-card">
+        <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-2">Tu apartamento</div>
         <h2 className="font-display text-2xl sm:text-4xl mb-2 break-words">{project?.name ?? "—"}</h2>
-        <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-primary-foreground/80">
-          <span>Unidad <strong className="text-primary-foreground">{unit?.unit_number}</strong></span>
-          {unit?.floor !== null && <span>Piso <strong className="text-primary-foreground">{unit?.floor}</strong></span>}
-          {unit?.sqft && <span><strong className="text-primary-foreground">{unit.sqft}</strong> m²</span>}
-          {project?.estimated_delivery && <span>Entrega: <strong className="text-primary-foreground">{fmtDate(project.estimated_delivery)}</strong></span>}
+        <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-muted-foreground">
+          <span>Unidad <strong className="text-foreground">{unit?.unit_number}</strong></span>
+          {unit?.floor !== null && <span>Piso <strong className="text-foreground">{unit?.floor}</strong></span>}
+          {unit?.sqft && <span><strong className="text-foreground">{unit.sqft}</strong> m²</span>}
+          {project?.estimated_delivery && <span>Entrega: <strong className="text-foreground">{fmtDate(project.estimated_delivery)}</strong></span>}
         </div>
       </div>
 

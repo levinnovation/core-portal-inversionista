@@ -8,6 +8,7 @@ import {
 import { ReactNode, useState } from "react";
 import { NotificationBell } from "@/components/NotificationBell";
 import { PortalSwitcher } from "@/components/PortalSwitcher";
+import { CoreLogo } from "@/components/CoreLogo";
 
 const nav = [
   { to: "/admin", label: "Resumen", icon: LayoutDashboard, end: true },
@@ -34,7 +35,7 @@ export const AdminLayout = ({ children }: { children?: ReactNode }) => {
     <aside className="w-64 bg-sidebar text-sidebar-foreground flex flex-col border-r border-sidebar-border shrink-0 h-full">
       <div className="px-6 py-7 border-b border-sidebar-border flex items-center justify-between">
         <div>
-          <div className="font-display text-2xl text-accent tracking-tight">CORE</div>
+          <CoreLogo className="h-7" />
           <div className="text-xs uppercase tracking-[0.2em] text-sidebar-foreground/60 mt-1">Equipo Core</div>
         </div>
         <button className="md:hidden text-sidebar-foreground/70 p-1" onClick={() => setOpen(false)} aria-label="Cerrar menú">
@@ -93,7 +94,7 @@ export const AdminLayout = ({ children }: { children?: ReactNode }) => {
           <button onClick={() => setOpen(true)} aria-label="Abrir menú" className="p-1.5 rounded-md hover:bg-subtle">
             <Menu className="h-5 w-5" />
           </button>
-          <div className="font-display text-lg text-accent">CORE Admin</div>
+          <div className="flex items-center gap-2"><CoreLogo className="h-6" /><span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Admin</span></div>
           <div className="flex items-center gap-2">
             <PortalSwitcher />
             <NotificationBell />
