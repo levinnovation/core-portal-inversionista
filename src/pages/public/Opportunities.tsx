@@ -4,7 +4,7 @@ import { useSeo } from "@/components/public/PublicLayout";
 import { useLeadDialog } from "@/components/public/LeadDialog";
 import { SectionHeading, CtaBand } from "@/components/public/Sections";
 import { opportunities, soldProjects } from "@/content/site";
-import { Check, ExternalLink } from "lucide-react";
+import { Check, ExternalLink, ArrowRight } from "lucide-react";
 
 const ALL = "Todos";
 
@@ -129,12 +129,12 @@ const Opportunities = () => {
                   )}
 
                   <div className="flex flex-wrap gap-3">
-                    <Button onClick={() => open(`oportunidad:${o.slug}`)} className="bg-primary text-primary-foreground hover:bg-primary-glow">
-                      Solicitar información
+                    <Button variant="premium" size="sm" onClick={() => open(`oportunidad:${o.slug}`)}>
+                      Solicitar información <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                     </Button>
                     {o.site && (
                       <a href={o.site} target="_blank" rel="noopener noreferrer">
-                        <Button variant="outline">
+                        <Button variant="outline" size="sm">
                           Sitio del proyecto <ExternalLink className="ml-2 h-4 w-4" />
                         </Button>
                       </a>

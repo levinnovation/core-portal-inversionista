@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ArrowRight, Quote } from "lucide-react";
+import { ArrowRight, Quote, LogIn } from "lucide-react";
 import { useLeadDialog } from "./LeadDialog";
 import type { Opportunity } from "@/content/site";
 
@@ -115,12 +115,12 @@ export const CtaBand = ({
         <h2 className="font-display text-3xl md:text-4xl mb-4">{title}</h2>
         <p className="text-primary-foreground/75 max-w-xl mx-auto mb-8 leading-relaxed">{body}</p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Button size="lg" onClick={() => open(source)} className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-gold">
+          <Button size="lg" variant="premium" onClick={() => open(source)}>
             Solicitar acceso <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
           <Link to="/auth">
             <Button size="lg" variant="outline" className="w-full sm:w-auto bg-transparent border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
-              Ya soy inversionista
+              <LogIn className="mr-2 h-4 w-4" /> Ya soy inversionista
             </Button>
           </Link>
         </div>
