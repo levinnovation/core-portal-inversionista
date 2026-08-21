@@ -19,7 +19,7 @@ import {
   Legend,
 } from "recharts";
 
-const COLORS = ["hsl(var(--accent))", "hsl(var(--primary))", "hsl(var(--muted-foreground))", "#A8B5C7", "#D4AF7A"];
+const COLORS = ["hsl(var(--accent))", "hsl(0 0% 75%)", "hsl(0 0% 45%)", "hsl(64 60% 35%)", "hsl(0 0% 60%)"];
 
 const InvestorDashboard = () => {
   const { user } = useAuth();

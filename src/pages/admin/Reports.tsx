@@ -24,7 +24,7 @@ import autoTable from "jspdf-autotable";
 const fmtUSD = (n: number) =>
   new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n || 0);
 
-const COLORS = ["hsl(var(--accent))", "hsl(var(--primary))", "#8B6F3D", "#A8B5C7", "#D4AF7A", "#5A6B85"];
+const COLORS = ["hsl(var(--accent))", "hsl(0 0% 75%)", "hsl(64 60% 35%)", "hsl(0 0% 55%)", "hsl(0 0% 38%)", "hsl(64 40% 55%)"];
 
 interface Data {
   projects: any[];
@@ -310,7 +310,7 @@ const Reports = () => {
                     formatter={(v: number) => fmtUSD(v)}
                   />
                   <Legend wrapperStyle={{ fontSize: 12 }} />
-                  <Bar dataKey="capital" fill="hsl(var(--primary))" name="Capital" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="capital" fill="hsl(0 0% 75%)" name="Capital" radius={[4, 4, 0, 0]} />
                   <Bar dataKey="distribuido" fill="hsl(var(--accent))" name="Distribuido" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
@@ -353,7 +353,7 @@ const Reports = () => {
                   formatter={(v: number) => fmtUSD(v)}
                 />
                 <Legend wrapperStyle={{ fontSize: 12 }} />
-                <Line type="monotone" dataKey="cobrado" stroke="hsl(152 50% 38%)" strokeWidth={2.5} name="Cobrado" dot={{ r: 3 }} />
+                <Line type="monotone" dataKey="cobrado" stroke="hsl(152 55% 50%)" strokeWidth={2.5} name="Cobrado" dot={{ r: 3 }} />
                 <Line type="monotone" dataKey="pendiente" stroke="hsl(var(--accent))" strokeWidth={2.5} name="Pendiente" dot={{ r: 3 }} />
               </LineChart>
             </ResponsiveContainer>
