@@ -103,4 +103,5 @@
   .shadow-elegant { box-shadow: var(--shadow-elegant); }
   .shadow-card { box-shadow: var(--shadow-card); }
   .shadow-gold { box-shadow: var(--shadow-gold); }
+  .shadow-gold-hover { box-shadow: 0 10px 32px -10px hsl(38 65% 52% / 0.55); }
 }
