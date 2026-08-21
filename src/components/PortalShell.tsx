@@ -7,6 +7,7 @@ import { NotificationBell } from "@/components/NotificationBell";
 import { PortalSwitcher } from "@/components/PortalSwitcher";
 import { ImpersonateMenu } from "@/components/ImpersonateMenu";
 import { CoreLogo } from "@/components/CoreLogo";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface NavItem { to: string; label: string; icon?: ReactNode }
 
@@ -99,6 +100,7 @@ export const PortalShell = ({ title, subtitle, nav, children }: Props) => {
             <h1 className="font-display text-xl md:text-3xl text-foreground truncate">{title}</h1>
           </div>
           <div className="flex items-center gap-1.5 sm:gap-2 text-foreground shrink-0">
+            <ThemeToggle />
             <PortalSwitcher />
             <ImpersonateMenu />
             <NotificationBell />

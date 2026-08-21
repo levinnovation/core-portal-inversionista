@@ -14,6 +14,7 @@ import { PhasePhotoUploader } from "@/components/admin/PhasePhotoUploader";
 import { DocumentUploadDialog } from "@/components/admin/DocumentUploadDialog";
 import { FileText, Download, Upload as UploadIcon } from "lucide-react";
 import { ProjectReportEditor } from "@/components/admin/ProjectReportEditor";
+import { ProjectMetricsTab } from "@/components/admin/ProjectMetricsTab";
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -64,14 +65,19 @@ const ProjectDetail = () => {
         <div className="bg-card border border-border rounded-lg p-5"><div className="text-xs uppercase text-muted-foreground mb-1">Entrega</div><div className="font-medium">{project.estimated_delivery ? new Date(project.estimated_delivery).toLocaleDateString("es-CO") : "—"}</div></div>
       </div>
 
-      <Tabs defaultValue="phases">
+      <Tabs defaultValue="metrics">
         <TabsList className="w-full justify-start overflow-x-auto">
+          <TabsTrigger value="metrics">Métricas</TabsTrigger>
           <TabsTrigger value="phases">Fases de obra ({phases.length})</TabsTrigger>
           <TabsTrigger value="units">Unidades ({units.length})</TabsTrigger>
           <TabsTrigger value="docs">Documentos ({docs.length})</TabsTrigger>
           <TabsTrigger value="report">Informe mensual</TabsTrigger>
           <TabsTrigger value="info">Información</TabsTrigger>
         </TabsList>
+
+        <TabsContent value="metrics" className="mt-4">
+          {id && <ProjectMetricsTab projectId={id} />}
+        </TabsContent>
 
         <TabsContent value="phases">
           <div className="bg-card border border-border rounded-lg p-6 shadow-card">
