@@ -28,7 +28,7 @@ const columns = [
 ];
 
 export const PublicFooter = () => (
-  <footer className="bg-accent text-foreground">
+  <footer className="bg-primary text-primary-foreground border-t border-border">
     <div className="max-w-7xl mx-auto px-6 py-16 grid gap-10 md:grid-cols-4">
       <div>
         <div className="font-display text-2xl text-accent mb-3">CORE</div>
