@@ -24,6 +24,7 @@ const InvestorPortal = () => {
       <Routes>
         <Route index element={<InvestorDashboard />} />
         <Route path="proyectos" element={<InvestorProjects />} />
+        <Route path="proyectos/:id" element={<InvestorProjectDetail />} />
         <Route path="distribuciones" element={<InvestorDistributions />} />
         <Route path="documentos" element={<InvestorDocuments />} />
         <Route path="agente" element={<InvestorAgent />} />
