@@ -13,6 +13,7 @@ import { UnitFormDialog } from "@/components/admin/UnitFormDialog";
 import { PhasePhotoUploader } from "@/components/admin/PhasePhotoUploader";
 import { DocumentUploadDialog } from "@/components/admin/DocumentUploadDialog";
 import { FileText, Download, Upload as UploadIcon } from "lucide-react";
+import { ProjectReportEditor } from "@/components/admin/ProjectReportEditor";
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -68,6 +69,7 @@ const ProjectDetail = () => {
           <TabsTrigger value="phases">Fases de obra ({phases.length})</TabsTrigger>
           <TabsTrigger value="units">Unidades ({units.length})</TabsTrigger>
           <TabsTrigger value="docs">Documentos ({docs.length})</TabsTrigger>
+          <TabsTrigger value="report">Informe mensual</TabsTrigger>
           <TabsTrigger value="info">Información</TabsTrigger>
         </TabsList>
 
@@ -165,6 +167,10 @@ const ProjectDetail = () => {
               </div>
             )}
           </div>
+        </TabsContent>
+
+        <TabsContent value="report">
+          {id && <ProjectReportEditor projectId={id} />}
         </TabsContent>
 
         <TabsContent value="info">
