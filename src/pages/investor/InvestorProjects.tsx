@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { useImpersonation } from "@/hooks/useImpersonation";
 import { supabase } from "@/integrations/supabase/client";
 import { loadPortfolio, fmtUSD, fmtDate } from "@/lib/investor";
 import { Progress } from "@/components/ui/progress";
-import { MapPin, Calendar, TrendingUp, TrendingDown, Target, Percent, Activity } from "lucide-react";
+import { MapPin, Calendar, ArrowRight, TrendingUp, TrendingDown, Target, Percent, Activity } from "lucide-react";
 import { projectPerformance, fmtPct } from "@/lib/finance";
 
 const typeLabels: Record<string, string> = {
@@ -77,7 +79,9 @@ const InvestorProjects = () => {
           <div key={p.id} className="bg-card border border-border rounded-lg p-6 shadow-card">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
               <div className="min-w-0 flex-1">
-                <h3 className="font-display text-2xl mb-1 truncate">{p.name}</h3>
+                <Link to={`/inversionistas/proyectos/${p.id}`} className="block hover:text-accent transition-colors">
+                  <h3 className="font-display text-2xl mb-1 truncate">{p.name}</h3>
+                </Link>
                 <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
                   {p.location && <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" />{p.location}</span>}
                   {p.estimated_delivery && (
@@ -89,6 +93,9 @@ const InvestorProjects = () => {
               <div className="text-left sm:text-right shrink-0">
                 <div className="text-xs uppercase tracking-wider text-muted-foreground">Mi capital</div>
                 <div className="font-display text-2xl truncate" title={fmtUSD(perf.invested)}>{fmtUSD(perf.invested)}</div>
+                <Button asChild size="sm" variant="premium" className="mt-2">
+                  <Link to={`/inversionistas/proyectos/${p.id}`}>Ver informe <ArrowRight className="h-4 w-4 ml-1.5" /></Link>
+                </Button>
                 {perf.firstDate && (
                   <div className="text-xs text-muted-foreground">
                     Desde {fmtDate(perf.firstDate.toISOString())} · {Math.round(perf.monthsHeld)} meses
