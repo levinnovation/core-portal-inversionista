@@ -18,8 +18,10 @@ const items: MethodItem[] = [
     assumptions: [
       "Inversiones se registran como flujos negativos en investment_date.",
       "Distribuciones se registran como flujos positivos en distribution_date.",
+      "Para inversiones vigentes se agrega un flujo positivo a la fecha de hoy con el capital aún no devuelto, valorado a costo (sin apreciación ni valor de mercado estimado).",
       "Año base de 365 días; no se reinvierten distribuciones.",
       "Requiere al menos un flujo positivo y uno negativo; si no converge devuelve “—”.",
+
     ],
   },
   {

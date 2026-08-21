@@ -24,7 +24,7 @@ export const AdvancedMetrics = ({ investments, distributions, totalInvested, tot
       label: "IRR (anualizada)",
       value: irr !== null ? fmtPct(irr) : "—",
       icon: <Activity className="h-5 w-5" />,
-      help: "Tasa interna de retorno anualizada calculada con flujos reales (XIRR, Newton-Raphson).",
+      help: "Tasa interna de retorno anualizada calculada con flujos reales (XIRR, Newton-Raphson). En inversiones vigentes incluye el capital no devuelto valorado a costo.",
     },
     {
       label: "Cash-on-Cash",
