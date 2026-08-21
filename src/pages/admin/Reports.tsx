@@ -306,7 +306,7 @@ const Reports = () => {
                   <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={11} />
                   <YAxis stroke="hsl(var(--muted-foreground))" fontSize={11} tickFormatter={(v) => `$${(v / 1e6).toFixed(0)}M`} />
                   <Tooltip
-                    contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 8 }}
+                    contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", color: "hsl(var(--card-foreground))", borderRadius: 8 }}
                     formatter={(v: number) => fmtUSD(v)}
                   />
                   <Legend wrapperStyle={{ fontSize: 12 }} />
@@ -328,7 +328,7 @@ const Reports = () => {
                   <Pie data={capitalByProject} dataKey="value" nameKey="name" cx="50%" cy="42%" innerRadius="42%" outerRadius="72%" paddingAngle={2}>
                     {capitalByProject.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
                   </Pie>
-                  <Tooltip formatter={(v: number) => fmtUSD(v)} contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 8 }} />
+                  <Tooltip formatter={(v: number) => fmtUSD(v)} contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", color: "hsl(var(--card-foreground))", borderRadius: 8 }} />
                   <Legend wrapperStyle={{ fontSize: 11 }} verticalAlign="bottom" height={36} iconSize={8} />
                 </PieChart>
               </ResponsiveContainer>
@@ -349,7 +349,7 @@ const Reports = () => {
                 <XAxis dataKey="mes" stroke="hsl(var(--muted-foreground))" fontSize={11} />
                 <YAxis stroke="hsl(var(--muted-foreground))" fontSize={11} tickFormatter={(v) => `$${(v / 1e6).toFixed(1)}M`} />
                 <Tooltip
-                  contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 8 }}
+                  contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", color: "hsl(var(--card-foreground))", borderRadius: 8 }}
                   formatter={(v: number) => fmtUSD(v)}
                 />
                 <Legend wrapperStyle={{ fontSize: 12 }} />
@@ -373,7 +373,7 @@ const Reports = () => {
                   <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                   <XAxis dataKey="status" stroke="hsl(var(--muted-foreground))" fontSize={11} />
                   <YAxis stroke="hsl(var(--muted-foreground))" fontSize={11} allowDecimals={false} />
-                  <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 8 }} />
+                  <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", color: "hsl(var(--card-foreground))", borderRadius: 8 }} />
                   <Bar dataKey="count" fill="hsl(var(--accent))" radius={[4, 4, 0, 0]} name="Unidades" />
                 </BarChart>
               </ResponsiveContainer>
